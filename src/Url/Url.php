@@ -20,19 +20,12 @@ class Url
     /** @var string */
     protected $url;
 
+    /**
+     * @param $url
+     */
     public function __construct($url)
     {
-        $this->url = self::cleanUrl($url);
-    }
-
-    public function getSegments()
-    {
-        return array_filter(explode('/', $this->url));
-    }
-
-    public function __toString()
-    {
-        return $this->url;
+        $this->setUrl($url);
     }
 
     /**
@@ -43,5 +36,48 @@ class Url
     public static function cleanUrl($url)
     {
         return preg_replace('#/+#', '/', $url);
+    }
+
+    /**
+     * @param int      $offset
+     * @param int|null $length
+     *
+     * @return Url
+     */
+    public function sliceSegments($offset, $length = null)
+    {
+        return new self(implode('/', array_slice($this->getSegments(), $offset, $length)));
+    }
+
+    /**
+     * @return array
+     */
+    public function getSegments()
+    {
+        return array_filter(explode('/', $this->url));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRoot()
+    {
+        return count($this->getSegments()) == 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = self::cleanUrl($url);
     }
 }

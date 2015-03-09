@@ -8,17 +8,13 @@
  * @license  MIT
  */
 
-namespace Branches\Node;
-
-use Branches\Branches;
-use Branches\Property\PropertyHolderTrait;
+namespace Branches\Dynamic;
 
 /**
- * Class File
+ * Interface DynamicFileProviderInterface
  *
- * @package Branches\Node
+ * @package Branches\Dynamic
  */
-class File extends Node implements FileInterface
+interface DynamicFileProviderInterface extends DynamicNodeProviderInterface
 {
-
 }

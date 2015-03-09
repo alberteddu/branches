@@ -14,7 +14,8 @@
     "require-dev": {
         "phing/phing": "*",
         "phpunit/phpunit": "*",
-        "squizlabs/php_codesniffer": "2.*"
+        "squizlabs/php_codesniffer": "2.*",
+        "psy/psysh": "@stable"
     },
     "autoload": {
         "files": [

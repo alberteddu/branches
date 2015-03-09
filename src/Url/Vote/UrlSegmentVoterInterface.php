@@ -28,4 +28,11 @@ interface UrlSegmentVoterInterface extends VoterInterface
      * @param string $pathSegment
      */
     public function setPathSegment($pathSegment);
+
+    /**
+     * @param string $pathSegment
+     *
+     * @return string
+     */
+    public function transformSegment($pathSegment);
 }

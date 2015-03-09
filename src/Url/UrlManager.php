@@ -13,6 +13,7 @@ namespace Branches\Url;
 use Branches\Branches;
 use Branches\Url\Vote\UrlSegmentVoterInterface;
 use Branches\Vote\VoteResult;
+use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
 
@@ -37,14 +38,22 @@ class UrlManager
         $this->branches = $branches;
     }
 
-    public function urlMatches(Url $url, $path)
+    /**
+     * @param Url $url
+     *
+     * @return false|Location
+     */
+    public function urlMatches(Url $url)
     {
-        $currentPath = $path;
+        $currentPath = $this->branches->getPath();
+        $urlSegments = array();
 
         foreach ($url->getSegments() as $urlSegment) {
             $found           = false;
             $realPathSegment = $urlSegment;
+            $realUrlSegment  = $urlSegment;
 
+            /** @var DirectoryIterator $nodePath */
             foreach (new RecursiveDirectoryIterator($currentPath, FilesystemIterator::SKIP_DOTS) as $nodePath) {
                 if ($found) {
                     break;
@@ -52,7 +61,7 @@ class UrlManager
 
                 $pathSegment = $nodePath->getFilename();
 
-                if ($this->segmentMatches($urlSegment, $pathSegment)) {
+                if (($realUrlSegment = $this->segmentMatches($urlSegment, $pathSegment))) {
                     $found           = true;
                     $realPathSegment = $pathSegment;
                 }
@@ -63,27 +72,59 @@ class UrlManager
             }
 
             $currentPath .= '/' . $realPathSegment;
+            $urlSegments[] = $realUrlSegment;
         }
 
-        return $currentPath;
+        $realUrl = new Url(implode('/', $urlSegments));
+
+        return new Location($realUrl, $currentPath);
     }
 
+    /**
+     * @param $urlSegment
+     * @param $pathSegment
+     *
+     * @return bool
+     */
     protected function segmentMatches($urlSegment, $pathSegment)
     {
+        $result         = false;
+        $realUrlSegment = $urlSegment;
+
         foreach ($this->urlSegmentVoters as $urlSegmentVoter) {
-            $urlSegmentVoter->setUrlSegment($urlSegment);
+            $urlSegmentVoter->setUrlSegment($urlSegmentVoter->transformSegment($urlSegment));
             $urlSegmentVoter->setPathSegment($pathSegment);
 
             if ($urlSegmentVoter->vote() === VoteResult::NO) {
-                return false;
+                $result = false;
+            }
+
+            if ($urlSegmentVoter->vote() === VoteResult::YES) {
+                $result = true;
+                $realUrlSegment = $urlSegmentVoter->transformSegment($urlSegment);
             }
         }
 
-        return true;
+        return $result ? $realUrlSegment : false;
     }
 
+    /**
+     * @param UrlSegmentVoterInterface $urlSegmentVoter
+     */
     public function addUrlSegmentVoter(UrlSegmentVoterInterface $urlSegmentVoter)
     {
         $this->urlSegmentVoters[] = $urlSegmentVoter;
+    }
+
+    /**
+     * @return string
+     */
+    public function buildPath()
+    {
+        $segments = func_get_args();
+
+        array_unshift($segments, $this->branches->getPath());
+
+        return call_user_func_array('\joinPaths', $segments);
     }
 }

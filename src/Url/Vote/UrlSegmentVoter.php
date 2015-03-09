@@ -40,4 +40,14 @@ abstract class UrlSegmentVoter implements UrlSegmentVoterInterface
     {
         $this->pathSegment = $pathSegment;
     }
+
+    /**
+     * @param string $pathSegment
+     *
+     * @return string
+     */
+    public function transformSegment($pathSegment)
+    {
+        return $pathSegment;
+    }
 }

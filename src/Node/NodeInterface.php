@@ -26,4 +26,11 @@ interface NodeInterface
      * @return string
      */
     public function getPath();
+
+    /**
+     * @param NodeInterface $node
+     *
+     * @return bool
+     */
+    public function is(NodeInterface $node);
 }

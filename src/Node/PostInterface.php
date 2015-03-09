@@ -17,5 +17,23 @@ namespace Branches\Node;
  */
 interface PostInterface extends NodeInterface
 {
+    /**
+     * @return PostInterface|null
+     */
+    public function getParent();
 
+    /**
+     * @return PostListInterface
+     */
+    public function getSiblings();
+
+    /**
+     * @return PostListInterface
+     */
+    public function getChildren();
+
+    /**
+     * @return FileListInterface
+     */
+    public function getAttachments();
 }

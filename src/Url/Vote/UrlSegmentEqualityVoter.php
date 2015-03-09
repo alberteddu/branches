@@ -26,6 +26,6 @@ class UrlSegmentEqualityVoter extends UrlSegmentVoter implements UrlSegmentVoter
      */
     public function vote()
     {
-        return (string) $this->urlSegment == $this->pathSegment ? VoteResult::YES : VoteResult::ABSTAIN;
+        return (string) $this->urlSegment == $this->pathSegment ? VoteResult::YES : VoteResult::NO;
     }
 }

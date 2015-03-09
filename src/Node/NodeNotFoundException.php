@@ -22,10 +22,7 @@ class NodeNotFoundException extends Exception
     /** @var string */
     protected $url;
 
-    /** @var string */
-    protected $path;
-
-    public function __construct($url, $path, $message = '', $code = 0, Exception $previous = null)
+    public function __construct($url, $message = '', $code = 0, Exception $previous = null)
     {
         if (empty($message)) {
             $message = sprintf('Node at "%s" was not found.', $url);
@@ -40,13 +37,5 @@ class NodeNotFoundException extends Exception
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
     }
 }

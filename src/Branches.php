@@ -13,15 +13,16 @@ namespace Branches;
 use Branches\Extension\ExtensionInterface;
 use Branches\Node\NodeInterface;
 use Branches\Node\NodeNotFoundException;
+use Branches\Node\NodeManager;
+use Branches\Provider\FileListProvider;
+use Branches\Provider\FileListProviderInterface;
 use Branches\Provider\FileProvider;
 use Branches\Provider\FileProviderInterface;
+use Branches\Provider\PostListProvider;
+use Branches\Provider\PostListProviderInterface;
 use Branches\Provider\PostProvider;
 use Branches\Provider\PostProviderInterface;
-use Branches\Resolution\FileResolution;
-use Branches\Resolution\NotFoundResolution;
-use Branches\Resolution\PostResolution;
 use Branches\Resolution\ResolutionManager;
-use Branches\Url\Url;
 use Branches\Url\UrlManager;
 use Branches\Url\Vote\UrlSegmentEqualityVoter;
 use Exception;
@@ -44,11 +45,20 @@ class Branches
     /** @var FileProviderInterface */
     protected $fileProvider;
 
+    /** @var PostListProviderInterface */
+    protected $postListProvider;
+
+    /** @var FileListProviderInterface */
+    protected $fileListProvider;
+
     /** @var ResolutionManager */
     protected $resolutionManager;
 
     /** @var UrlManager */
     protected $urlManager;
+
+    /** @var NodeManager */
+    protected $nodeManager;
 
     /**
      * @param string $directory
@@ -64,10 +74,25 @@ class Branches
         $this->path              = realpath($directory);
         $this->postProvider      = new PostProvider($this);
         $this->fileProvider      = new FileProvider($this);
-        $this->urlManager        = new UrlManager($this);
+        $this->postListProvider  = new PostListProvider($this);
+        $this->fileListProvider  = new FileListProvider($this);
         $this->resolutionManager = new ResolutionManager($this);
+        $this->urlManager        = new UrlManager($this);
+        $this->nodeManager       = new NodeManager($this);
 
         $this->urlManager->addUrlSegmentVoter(new UrlSegmentEqualityVoter());
+    }
+
+    /**
+     * @param $url
+     *
+     * @return NodeInterface
+     *
+     * @throws NodeNotFoundException
+     */
+    public function get($url = '/')
+    {
+        return $this->nodeManager->get($url);
     }
 
     /**
@@ -78,43 +103,6 @@ class Branches
     public static function isDirectoryValid($directory)
     {
         return is_dir($directory) and is_readable($directory);
-    }
-
-    /**
-     * Get post at $url.
-     *
-     * @param $url
-     *
-     * @return NodeInterface
-     *
-     * @throws NodeNotFoundException when node is not found
-     */
-    public function get($url)
-    {
-        $url      = new Url($url);
-        $realPath = $this->getUrlManager()->urlMatches($url, $this->getPath());
-
-        if ($realPath === false) {
-            $resolution = new NotFoundResolution();
-        } else {
-            if (self::isDirectoryValid($realPath)) {
-                $post       = $this->getPostProvider()->provide($url, $realPath);
-                $resolution = new PostResolution($post);
-            } elseif (self::isFileValid($realPath)) {
-                $file       = $this->getFileProvider()->provide($url, $realPath);
-                $resolution = new FileResolution($file);
-            } else {
-                $resolution = new NotFoundResolution();
-            }
-        }
-
-        $result = $this->resolutionManager->resolve($this->resolutionManager->filterResolution($url, $resolution));
-
-        if (is_null($result)) {
-            throw new NodeNotFoundException($url, $realPath);
-        }
-
-        return $result;
     }
 
     /**
@@ -150,6 +138,14 @@ class Branches
     }
 
     /**
+     * @return NodeManager
+     */
+    public function getNodeManager()
+    {
+        return $this->nodeManager;
+    }
+
+    /**
      * @param string $file
      *
      * @return bool
@@ -176,13 +172,19 @@ class Branches
     }
 
     /**
-     * @param string $url
-     *
-     * @return string
+     * @return PostListProviderInterface
      */
-    public function buildPath($url)
+    public function getPostListProvider()
     {
-        return \joinPaths($this->getPath(), $url);
+        return $this->postListProvider;
+    }
+
+    /**
+     * @param PostListProviderInterface $postListProvider
+     */
+    public function setPostListProvider($postListProvider)
+    {
+        $this->postListProvider = $postListProvider;
     }
 
     /**
@@ -199,5 +201,21 @@ class Branches
     public function useExtension(ExtensionInterface $extension)
     {
         $extension->setBranches($this);
+    }
+
+    /**
+     * @return FileListProviderInterface
+     */
+    public function getFileListProvider()
+    {
+        return $this->fileListProvider;
+    }
+
+    /**
+     * @param FileListProviderInterface $fileListProvider
+     */
+    public function setFileListProvider($fileListProvider)
+    {
+        $this->fileListProvider = $fileListProvider;
     }
 }

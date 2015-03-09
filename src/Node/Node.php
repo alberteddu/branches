@@ -19,7 +19,7 @@ use Branches\Url\Url;
  *
  * @package Branches\Node
  */
-abstract class Node implements PostInterface
+abstract class Node implements NodeInterface
 {
     use PropertyHolderTrait;
 
@@ -53,5 +53,15 @@ abstract class Node implements PostInterface
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * @param NodeInterface $node
+     *
+     * @return bool
+     */
+    public function is(NodeInterface $node)
+    {
+        return $this === $node;
     }
 }

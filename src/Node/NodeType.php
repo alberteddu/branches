@@ -10,15 +10,13 @@
 
 namespace Branches\Node;
 
-use Branches\Branches;
-use Branches\Property\PropertyHolderTrait;
-
 /**
- * Class File
+ * Class NodeType
  *
  * @package Branches\Node
  */
-class File extends Node implements FileInterface
+abstract class NodeType
 {
-
+    const POST = 'post';
+    const FILE = 'file';
 }

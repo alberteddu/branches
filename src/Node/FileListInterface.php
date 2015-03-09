@@ -10,15 +10,12 @@
 
 namespace Branches\Node;
 
-use Branches\Branches;
-use Branches\Property\PropertyHolderTrait;
-
 /**
- * Class File
+ * Interface FileListInterface
  *
  * @package Branches\Node
  */
-class File extends Node implements FileInterface
+interface FileListInterface extends NodeListInterface
 {
 
 }
