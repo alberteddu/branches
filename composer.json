@@ -1,0 +1,27 @@
+{
+    "name": "alberteddu/branches",
+    "description": "Manage a directory of posts with attachments",
+    "version": "0.0.1",
+    "homepage": "http://albertopiu.com/project/branches",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alberto Piu",
+            "email": "alberteddu@gmail.com",
+            "homepage": "http://albertopiu.com"
+        }
+    ],
+    "require-dev": {
+        "phing/phing": "*",
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "files": [
+            "lib/joinPaths.php"
+        ],
+        "psr-4": {
+            "Branches\\": "src"
+        }
+    }
+}
