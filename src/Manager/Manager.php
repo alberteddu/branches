@@ -8,19 +8,25 @@
  * @license  MIT
  */
 
-namespace Branches\Extension;
+namespace Branches\Manager;
 
 use Branches\Branches;
 
 /**
- * Interface ExtensionInterface
+ * Class Manager
  *
- * @package Branches\Resolution
+ * @package Branches\Manager
  */
-interface ExtensionInterface
+abstract class Manager
 {
+    /** @var Branches */
+    protected $branches;
+
     /**
      * @param Branches $branches
      */
-    public function setBranches(Branches $branches);
+    public function __construct(Branches $branches)
+    {
+        $this->branches = $branches;
+    }
 }

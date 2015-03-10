@@ -42,12 +42,12 @@ abstract class UrlSegmentVoter implements UrlSegmentVoterInterface
     }
 
     /**
-     * @param string $pathSegment
+     * @param string $segment
      *
      * @return string
      */
-    public function transformSegment($pathSegment)
+    public function transformSegment($segment)
     {
-        return $pathSegment;
+        return $segment;
     }
 }

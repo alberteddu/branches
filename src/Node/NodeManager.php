@@ -15,6 +15,9 @@ use Branches\Branches;
 use Branches\Dynamic\DynamicFileProviderInterface;
 use Branches\Dynamic\DynamicNodeProviderInterface;
 use Branches\Dynamic\DynamicPostProviderInterface;
+use Branches\Extension\DynamicNodeProviderExtensionInterface;
+use Branches\Extension\ExtensionInterface;
+use Branches\Manager\Manager;
 use Branches\Resolution\FileResolution;
 use Branches\Resolution\NotFoundResolution;
 use Branches\Resolution\PostResolution;
@@ -22,31 +25,15 @@ use Branches\Url\Url;
 use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
+use SplPriorityQueue;
 
 /**
  * Class PostManager
  *
  * @package Branches\Node
  */
-class NodeManager
+class NodeManager extends Manager
 {
-    /** @var Branches */
-    protected $branches;
-
-    /** @var DynamicPostProviderInterface[] */
-    protected $dynamicPostProviders = array();
-
-    /** @var DynamicFileProviderInterface[] */
-    protected $dynamicFileProviders = array();
-
-    /**
-     * @param Branches $branches
-     */
-    public function __construct(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
-
     /**
      * @param string $path
      * @param string $url
@@ -81,10 +68,10 @@ class NodeManager
 
         if (NodeType::POST === $nodeType) {
             $listProvider     = $this->branches->getPostListProvider();
-            $dynamicProviders = $this->dynamicPostProviders;
+            $dynamicProviders = $this->getDynamicPostProviders();
         } else {
             $listProvider     = $this->branches->getFileListProvider();
-            $dynamicProviders = $this->dynamicFileProviders;
+            $dynamicProviders = $this->getDynamicFileProviders();
         }
 
         /** @var DynamicNodeProviderInterface $dynamicProvider */
@@ -149,5 +136,29 @@ class NodeManager
     public function addDynamicFileProvider(DynamicFileProviderInterface $dynamicFileProvider)
     {
         $this->dynamicFileProviders[] = $dynamicFileProvider;
+    }
+
+    /**
+     * @return SplPriorityQueue
+     */
+    public function getDynamicPostProviders()
+    {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
+            if($extension instanceof DynamicNodeProviderExtensionInterface) {
+                $extension->getDynamicPostProviders($queue);
+            }
+        });
+    }
+
+    /**
+     * @return SplPriorityQueue
+     */
+    public function getDynamicFileProviders()
+    {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
+            if($extension instanceof DynamicNodeProviderExtensionInterface) {
+                $extension->getDynamicFileProviders($queue);
+            }
+        });
     }
 }

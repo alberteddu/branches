@@ -11,16 +11,17 @@
 namespace Branches\Extension;
 
 use Branches\Branches;
+use SplPriorityQueue;
 
 /**
- * Interface ExtensionInterface
+ * Interface UrlSegmentVoterExtensionInterface
  *
- * @package Branches\Resolution
+ * @package Branches\Extension
  */
-interface ExtensionInterface
+interface UrlSegmentVoterExtensionInterface
 {
     /**
-     * @param Branches $branches
+     * @param SplPriorityQueue $queue
      */
-    public function setBranches(Branches $branches);
+    public function getUrlSegmentVoters(SplPriorityQueue $queue);
 }

@@ -62,6 +62,6 @@ abstract class Node implements NodeInterface
      */
     public function is(NodeInterface $node)
     {
-        return $this === $node;
+        return $this == $node;
     }
 }

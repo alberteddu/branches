@@ -17,5 +17,8 @@ namespace Branches\Node;
  */
 interface FileInterface extends NodeInterface
 {
-
+    /**
+     * @return PostInterface
+     */
+    public function getPost();
 }

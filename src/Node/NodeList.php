@@ -13,13 +13,14 @@ namespace Branches\Node;
 use ArrayIterator;
 use Branches\Branches;
 use Branches\Provider\NodeListProviderInterface;
+use IteratorAggregate;
 
 /**
  * Class NodeList
  *
  * @package Branches\Node
  */
-abstract class NodeList extends ArrayIterator implements NodeListInterface
+abstract class NodeList implements NodeListInterface, IteratorAggregate
 {
     /** @var Branches */
     protected $branches;
@@ -79,6 +80,14 @@ abstract class NodeList extends ArrayIterator implements NodeListInterface
     public function asArray()
     {
         return $this->elements;
+    }
+
+    /**
+     * @return ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->elements);
     }
 
     /**

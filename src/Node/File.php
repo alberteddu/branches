@@ -20,5 +20,11 @@ use Branches\Property\PropertyHolderTrait;
  */
 class File extends Node implements FileInterface
 {
-
+    /**
+     * @return PostInterface
+     */
+    public function getPost()
+    {
+        return $this->branches->get((string) $this->getUrl()->sliceSegments(0, -1));
+    }
 }

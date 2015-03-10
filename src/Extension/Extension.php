@@ -13,14 +13,20 @@ namespace Branches\Extension;
 use Branches\Branches;
 
 /**
- * Interface ExtensionInterface
+ * Class Extension
  *
- * @package Branches\Resolution
+ * @package Branches\Extension
  */
-interface ExtensionInterface
+class Extension
 {
+    /** @var Branches */
+    protected $branches;
+
     /**
      * @param Branches $branches
      */
-    public function setBranches(Branches $branches);
+    public function setBranches(Branches $branches)
+    {
+        $this->branches = $branches;
+    }
 }

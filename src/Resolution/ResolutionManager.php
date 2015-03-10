@@ -11,6 +11,7 @@
 namespace Branches\Resolution;
 
 use Branches\Branches;
+use Branches\Manager\Manager;
 use Branches\Node\NodeInterface;
 use Branches\Resolution\Filter\ResolutionFilterInterface;
 
@@ -19,21 +20,10 @@ use Branches\Resolution\Filter\ResolutionFilterInterface;
  *
  * @package Branches\Resolution
  */
-class ResolutionManager
+class ResolutionManager extends Manager
 {
-    /** @var Branches */
-    protected $branches;
-
     /** @var ResolutionFilterInterface[] */
     protected $resolutionFilters = array();
-
-    /**
-     * @param Branches $branches
-     */
-    public function __construct(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
 
     /**
      * @param ResolutionInterface $resolution

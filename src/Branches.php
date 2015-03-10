@@ -11,6 +11,7 @@
 namespace Branches;
 
 use Branches\Extension\ExtensionInterface;
+use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\NodeManager;
@@ -60,6 +61,9 @@ class Branches
     /** @var NodeManager */
     protected $nodeManager;
 
+    /** @var ExtensionManager */
+    protected $extensionManager;
+
     /**
      * @param string $directory
      *
@@ -79,8 +83,19 @@ class Branches
         $this->resolutionManager = new ResolutionManager($this);
         $this->urlManager        = new UrlManager($this);
         $this->nodeManager       = new NodeManager($this);
+        $this->extensionManager  = new ExtensionManager($this);
 
-        $this->urlManager->addUrlSegmentVoter(new UrlSegmentEqualityVoter());
+        $this->extensionManager->register('branches.url-segment-equality-voter', new UrlSegmentEqualityVoter());
+    }
+
+    /**
+     * @param string $directory
+     *
+     * @return bool
+     */
+    public static function isDirectoryValid($directory)
+    {
+        return is_dir($directory) and is_readable($directory);
     }
 
     /**
@@ -93,16 +108,6 @@ class Branches
     public function get($url = '/')
     {
         return $this->nodeManager->get($url);
-    }
-
-    /**
-     * @param string $directory
-     *
-     * @return bool
-     */
-    public static function isDirectoryValid($directory)
-    {
-        return is_dir($directory) and is_readable($directory);
     }
 
     /**
@@ -143,16 +148,6 @@ class Branches
     public function getNodeManager()
     {
         return $this->nodeManager;
-    }
-
-    /**
-     * @param string $file
-     *
-     * @return bool
-     */
-    public static function isFileValid($file)
-    {
-        return is_file($file) and is_readable($file);
     }
 
     /**
@@ -217,5 +212,23 @@ class Branches
     public function setFileListProvider($fileListProvider)
     {
         $this->fileListProvider = $fileListProvider;
+    }
+
+    /**
+     * @return ExtensionManager
+     */
+    public function getExtensionManager()
+    {
+        return $this->extensionManager;
+    }
+
+    /**
+     * @param string $file
+     *
+     * @return bool
+     */
+    public static function isFileValid($file)
+    {
+        return is_file($file) and is_readable($file);
     }
 }

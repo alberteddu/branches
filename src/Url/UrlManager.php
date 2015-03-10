@@ -11,33 +11,23 @@
 namespace Branches\Url;
 
 use Branches\Branches;
+use Branches\Extension\ExtensionInterface;
+use Branches\Extension\UrlSegmentVoterExtensionInterface;
+use Branches\Manager\Manager;
 use Branches\Url\Vote\UrlSegmentVoterInterface;
 use Branches\Vote\VoteResult;
 use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
+use SplPriorityQueue;
 
 /**
  * Class UrlManager
  *
  * @package Branches\Url
  */
-class UrlManager
+class UrlManager extends Manager
 {
-    /** @var Branches */
-    protected $branches;
-
-    /** @var UrlSegmentVoterInterface[] */
-    protected $urlSegmentVoters = array();
-
-    /**
-     * @param Branches $branches
-     */
-    public function __construct(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
-
     /**
      * @param Url $url
      *
@@ -91,7 +81,7 @@ class UrlManager
         $result         = false;
         $realUrlSegment = $urlSegment;
 
-        foreach ($this->urlSegmentVoters as $urlSegmentVoter) {
+        foreach ($this->getUrlSegmentVoters() as $urlSegmentVoter) {
             $urlSegmentVoter->setUrlSegment($urlSegmentVoter->transformSegment($urlSegment));
             $urlSegmentVoter->setPathSegment($pathSegment);
 
@@ -109,14 +99,6 @@ class UrlManager
     }
 
     /**
-     * @param UrlSegmentVoterInterface $urlSegmentVoter
-     */
-    public function addUrlSegmentVoter(UrlSegmentVoterInterface $urlSegmentVoter)
-    {
-        $this->urlSegmentVoters[] = $urlSegmentVoter;
-    }
-
-    /**
      * @return string
      */
     public function buildPath()
@@ -126,5 +108,17 @@ class UrlManager
         array_unshift($segments, $this->branches->getPath());
 
         return call_user_func_array('\joinPaths', $segments);
+    }
+
+    /**
+     * @return Vote\UrlSegmentVoterInterface[]
+     */
+    public function getUrlSegmentVoters()
+    {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
+            if($extension instanceof UrlSegmentVoterExtensionInterface) {
+                $extension->getUrlSegmentVoters($queue);
+            }
+        });
     }
 }
