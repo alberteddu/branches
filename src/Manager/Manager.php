@@ -10,8 +10,6 @@
 
 namespace Branches\Manager;
 
-use Branches\Branches;
-
 /**
  * Class Manager
  *
@@ -19,14 +17,5 @@ use Branches\Branches;
  */
 abstract class Manager
 {
-    /** @var Branches */
-    protected $branches;
-
-    /**
-     * @param Branches $branches
-     */
-    public function __construct(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
+    use ManagerTrait;
 }

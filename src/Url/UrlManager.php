@@ -11,15 +11,14 @@
 namespace Branches\Url;
 
 use Branches\Branches;
+use Branches\Component\ComponentHolder;
 use Branches\Extension\ExtensionInterface;
-use Branches\Extension\UrlSegmentVoterExtensionInterface;
+use Branches\Extension\UrlExtensionInterface;
 use Branches\Manager\Manager;
-use Branches\Url\Vote\UrlSegmentVoterInterface;
 use Branches\Vote\VoteResult;
 use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
-use SplPriorityQueue;
 
 /**
  * Class UrlManager
@@ -111,12 +110,12 @@ class UrlManager extends Manager
     }
 
     /**
-     * @return Vote\UrlSegmentVoterInterface[]
+     * @return ComponentHolder
      */
     public function getUrlSegmentVoters()
     {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
-            if($extension instanceof UrlSegmentVoterExtensionInterface) {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
+            if($extension instanceof UrlExtensionInterface) {
                 $extension->getUrlSegmentVoters($queue);
             }
         });

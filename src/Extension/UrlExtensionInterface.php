@@ -10,15 +10,17 @@
 
 namespace Branches\Extension;
 
+use Branches\Component\ComponentHolder;
+
 /**
- * Interface ExtensionInterface
+ * Interface UrlExtensionInterface
  *
  * @package Branches\Extension
  */
-interface ExtensionInterface
+interface UrlExtensionInterface extends ExtensionInterface
 {
     /**
-     * @return string
+     * @param ComponentHolder $queue
      */
-    public function getName();
+    public function getUrlSegmentVoters(ComponentHolder $queue);
 }

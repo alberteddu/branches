@@ -10,15 +10,17 @@
 
 namespace Branches\Extension;
 
+use Branches\Component\ComponentHolder;
+
 /**
- * Interface ExtensionInterface
+ * Interface ResolutionExtensionInterface
  *
  * @package Branches\Extension
  */
-interface ExtensionInterface
+interface ResolutionExtensionInterface extends ExtensionInterface
 {
     /**
-     * @return string
+     * @param ComponentHolder $queue
      */
-    public function getName();
+    public function getResolutionFilters(ComponentHolder $queue);
 }

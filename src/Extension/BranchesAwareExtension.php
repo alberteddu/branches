@@ -10,18 +10,15 @@
 
 namespace Branches\Extension;
 
-use Branches\Branches;
-use SplPriorityQueue;
+use Branches\Component\BranchesAwareInterface;
+use Branches\Component\BranchesAwareTrait;
 
 /**
- * Interface UrlSegmentVoterExtensionInterface
+ * Class BranchesAwareExtension
  *
  * @package Branches\Extension
  */
-interface UrlSegmentVoterExtensionInterface
+abstract class BranchesAwareExtension implements BranchesAwareExtensionInterface
 {
-    /**
-     * @param SplPriorityQueue $queue
-     */
-    public function getUrlSegmentVoters(SplPriorityQueue $queue);
+    use BranchesAwareTrait;
 }

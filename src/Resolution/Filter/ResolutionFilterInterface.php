@@ -10,7 +10,6 @@
 
 namespace Branches\Resolution\Filter;
 
-use Branches\Branches;
 use Branches\Resolution\ResolutionInterface;
 
 /**
@@ -28,14 +27,4 @@ interface ResolutionFilterInterface
      * @return ResolutionInterface
      */
     public function filter($url, ResolutionInterface $resolution, ResolutionInterface $originalResolution);
-
-    /**
-     * @param Branches $branches
-     */
-    public function setBranches(Branches $branches);
-
-    /**
-     * @return integer
-     */
-    public function getPriority();
 }

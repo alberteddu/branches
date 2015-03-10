@@ -10,15 +10,15 @@
 
 namespace Branches\Extension;
 
+use Branches\Branches;
+use Branches\Component\BranchesAwareInterface;
+
 /**
- * Interface ExtensionInterface
+ * Interface BranchesAwareExtensionInterface
  *
  * @package Branches\Extension
  */
-interface ExtensionInterface
+interface BranchesAwareExtensionInterface extends BranchesAwareInterface
 {
-    /**
-     * @return string
-     */
-    public function getName();
+
 }

@@ -10,6 +10,7 @@
 
 namespace Branches;
 
+use Branches\Extension\BranchesAwareExtensionInterface;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;
@@ -25,6 +26,7 @@ use Branches\Provider\PostProvider;
 use Branches\Provider\PostProviderInterface;
 use Branches\Resolution\ResolutionManager;
 use Branches\Url\UrlManager;
+use Branches\Url\Vote\Url;
 use Branches\Url\Vote\UrlSegmentEqualityVoter;
 use Exception;
 
@@ -85,7 +87,7 @@ class Branches
         $this->nodeManager       = new NodeManager($this);
         $this->extensionManager  = new ExtensionManager($this);
 
-        $this->extensionManager->register('branches.url-segment-equality-voter', new UrlSegmentEqualityVoter());
+        $this->useExtension(new UrlSegmentEqualityVoter());
     }
 
     /**
@@ -195,7 +197,11 @@ class Branches
      */
     public function useExtension(ExtensionInterface $extension)
     {
-        $extension->setBranches($this);
+        if($extension instanceof BranchesAwareExtensionInterface) {
+            $extension->setBranches($this);
+        }
+
+        $this->extensionManager->register($extension->getName(), $extension);
     }
 
     /**

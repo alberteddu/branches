@@ -12,10 +12,11 @@ namespace Branches\Node;
 
 use BadMethodCallException;
 use Branches\Branches;
+use Branches\Component\ComponentHolder;
 use Branches\Dynamic\DynamicFileProviderInterface;
 use Branches\Dynamic\DynamicNodeProviderInterface;
 use Branches\Dynamic\DynamicPostProviderInterface;
-use Branches\Extension\DynamicNodeProviderExtensionInterface;
+use Branches\Extension\DynamicNodeExtensionInterface;
 use Branches\Extension\ExtensionInterface;
 use Branches\Manager\Manager;
 use Branches\Resolution\FileResolution;
@@ -25,7 +26,6 @@ use Branches\Url\Url;
 use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
-use SplPriorityQueue;
 
 /**
  * Class PostManager
@@ -139,24 +139,24 @@ class NodeManager extends Manager
     }
 
     /**
-     * @return SplPriorityQueue
+     * @return ComponentHolder
      */
     public function getDynamicPostProviders()
     {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
-            if($extension instanceof DynamicNodeProviderExtensionInterface) {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
+            if($extension instanceof DynamicNodeExtensionInterface) {
                 $extension->getDynamicPostProviders($queue);
             }
         });
     }
 
     /**
-     * @return SplPriorityQueue
+     * @return ComponentHolder
      */
     public function getDynamicFileProviders()
     {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, SplPriorityQueue $queue) {
-            if($extension instanceof DynamicNodeProviderExtensionInterface) {
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
+            if($extension instanceof DynamicNodeExtensionInterface) {
                 $extension->getDynamicFileProviders($queue);
             }
         });

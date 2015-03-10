@@ -11,9 +11,11 @@
 namespace Branches\Resolution;
 
 use Branches\Branches;
+use Branches\Component\ComponentHolder;
+use Branches\Extension\ExtensionInterface;
+use Branches\Extension\ResolutionExtensionInterface;
 use Branches\Manager\Manager;
 use Branches\Node\NodeInterface;
-use Branches\Resolution\Filter\ResolutionFilterInterface;
 
 /**
  * Class ResolutionManager
@@ -22,9 +24,6 @@ use Branches\Resolution\Filter\ResolutionFilterInterface;
  */
 class ResolutionManager extends Manager
 {
-    /** @var ResolutionFilterInterface[] */
-    protected $resolutionFilters = array();
-
     /**
      * @param ResolutionInterface $resolution
      *
@@ -45,11 +44,7 @@ class ResolutionManager extends Manager
     {
         $originalResolution = $resolution;
 
-        usort($this->resolutionFilters, function (ResolutionFilterInterface $a, ResolutionFilterInterface $b) {
-            return $a->getPriority() - $b->getPriority();
-        });
-
-        foreach ($this->resolutionFilters as $resolutionFilter) {
+        foreach ($this->getResolutionFilters() as $resolutionFilter) {
             $resolution = $resolutionFilter->filter($url, $resolution, $originalResolution);
         }
 
@@ -57,12 +52,14 @@ class ResolutionManager extends Manager
     }
 
     /**
-     * @param ResolutionFilterInterface $resolutionFilter
+     * @return ComponentHolder
      */
-    public function addResolutionFilter(ResolutionFilterInterface $resolutionFilter)
+    public function getResolutionFilters()
     {
-        $resolutionFilter->setBranches($this->branches);
-
-        $this->resolutionFilters[] = $resolutionFilter;
+        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
+            if($extension instanceof ResolutionExtensionInterface) {
+                $extension->getResolutionFilters($queue);
+            }
+        });
     }
 }

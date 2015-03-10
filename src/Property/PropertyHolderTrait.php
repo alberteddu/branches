@@ -30,15 +30,14 @@ trait PropertyHolderTrait
     }
 
     /**
-     * @param      $name
-     *
-     * @param null $default
+     * @param $name
+     * @param $default
      *
      * @return mixed
      */
     public function getProperty($name, $default = null)
     {
-        if (!isset($this->properties[$name])) {
+        if (!$this->isPropertySet($name)) {
             return $default;
         }
 

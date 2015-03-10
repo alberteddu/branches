@@ -10,23 +10,12 @@
 
 namespace Branches\Extension;
 
-use Branches\Branches;
-
 /**
  * Class Extension
  *
  * @package Branches\Extension
  */
-class Extension
+abstract class Extension implements ExtensionInterface
 {
-    /** @var Branches */
-    protected $branches;
 
-    /**
-     * @param Branches $branches
-     */
-    public function setBranches(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
 }

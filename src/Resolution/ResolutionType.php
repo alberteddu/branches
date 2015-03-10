@@ -18,8 +18,6 @@ namespace Branches\Resolution;
 abstract class ResolutionType
 {
     const NOT_FOUND = 0;
-
     const POST = 1;
-
     const FILE = 2;
 }

@@ -10,8 +10,8 @@
 
 namespace Branches\Extension;
 
+use Branches\Component\ComponentHolder;
 use Branches\Manager\Manager;
-use SplPriorityQueue;
 
 /**
  * Class ExtensionManager
@@ -41,26 +41,27 @@ class ExtensionManager extends Manager
     }
 
     /**
+     * @param callable $callback
+     *
+     * @return ComponentHolder
+     */
+    public function collect(callable $callback)
+    {
+        $queue = new ComponentHolder();
+        $queue->setBranches($this->branches);
+
+        foreach ($this->getExtensions() as $extension) {
+            call_user_func($callback, $extension, $queue);
+        }
+
+        return $queue;
+    }
+
+    /**
      * @return ExtensionInterface[]
      */
     public function getExtensions()
     {
         return $this->extensions;
-    }
-
-    /**
-     * @param callable $callback
-     *
-     * @return SplPriorityQueue
-     */
-    public function collect(callable $callback)
-    {
-        $queue = new SplPriorityQueue();
-
-        foreach($this->getExtensions() as $extension) {
-            call_user_func($callback, $extension, $queue);
-        }
-
-        return $queue;
     }
 }

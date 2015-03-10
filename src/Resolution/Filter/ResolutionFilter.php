@@ -10,8 +10,7 @@
 
 namespace Branches\Resolution\Filter;
 
-use Branches\Branches;
-use Branches\Resolution\ResolutionInterface;
+use Branches\Component\BranchesAwareTrait;
 
 /**
  * Class ResolutionFilter
@@ -20,22 +19,5 @@ use Branches\Resolution\ResolutionInterface;
  */
 abstract class ResolutionFilter implements ResolutionFilterInterface
 {
-    /** @var Branches */
-    protected $branches;
 
-    /**
-     * @param Branches $branches
-     */
-    public function setBranches(Branches $branches)
-    {
-        $this->branches = $branches;
-    }
-
-    /**
-     * @return Branches
-     */
-    public function getBranches()
-    {
-        return $this->branches;
-    }
 }
