@@ -8,30 +8,30 @@
  * @license  MIT
  */
 
-namespace Branches\Node;
+namespace Branches\Directory;
 
 use Exception;
 
 /**
- * Class NodeNotFoundException
+ * Class InvalidDirectoryException
  *
- * @package Branches\Node
+ * @package Branches\Directory
  */
-class NodeNotFoundException extends Exception
+class InvalidDirectoryException extends Exception
 {
     /** @var string */
-    protected $url;
+    protected $directory;
 
     /**
-     * @param string    $url
+     * @param string    $directory
      * @param string    $message
      * @param int       $code
      * @param Exception $previous
      */
-    public function __construct($url, $message = '', $code = 0, Exception $previous = null)
+    public function __construct($directory, $message = '', $code = 0, Exception $previous = null)
     {
         if (empty($message)) {
-            $message = sprintf('Node at "%s" was not found.', $url);
+            $message = sprintf('Directory "%s" is not valid.', $directory);
         }
 
         parent::__construct($message, $code, $previous);
@@ -40,8 +40,8 @@ class NodeNotFoundException extends Exception
     /**
      * @return string
      */
-    public function getUrl()
+    public function getDirectory()
     {
-        return $this->url;
+        return $this->directory;
     }
 }

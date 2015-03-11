@@ -11,6 +11,7 @@
 namespace Branches;
 
 use Branches\Component\BranchesAwareInterface;
+use Branches\Directory\InvalidDirectoryException;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;
@@ -68,12 +69,12 @@ class Branches
     /**
      * @param string $directory
      *
-     * @throws Exception
+     * @throws InvalidDirectoryException
      */
     public function __construct($directory)
     {
         if (!self::isDirectoryValid($directory)) {
-            throw new Exception('The directory specified is not valid.');
+            throw new InvalidDirectoryException($directory);
         }
 
         $this->path              = realpath($directory);
