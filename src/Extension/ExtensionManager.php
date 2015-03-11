@@ -29,6 +29,10 @@ class ExtensionManager extends Manager
      */
     public function register($name, ExtensionInterface $extension)
     {
+        if ($extension instanceof BranchesAwareExtensionInterface) {
+            $extension->setBranches($this->branches);
+        }
+
         $this->extensions[$name] = $extension;
     }
 
