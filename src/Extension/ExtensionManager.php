@@ -10,6 +10,7 @@
 
 namespace Branches\Extension;
 
+use Branches\Component\BranchesAwareInterface;
 use Branches\Component\ComponentHolder;
 use Branches\Manager\Manager;
 
@@ -29,7 +30,7 @@ class ExtensionManager extends Manager
      */
     public function register($name, ExtensionInterface $extension)
     {
-        if ($extension instanceof BranchesAwareExtensionInterface) {
+        if ($extension instanceof BranchesAwareInterface) {
             $extension->setBranches($this->branches);
         }
 

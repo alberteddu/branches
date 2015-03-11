@@ -18,7 +18,7 @@ use Branches\Component\BranchesAwareTrait;
  *
  * @package Branches\Extension
  */
-abstract class BranchesAwareExtension implements BranchesAwareExtensionInterface
+abstract class BranchesAwareExtension implements BranchesAwareInterface
 {
     use BranchesAwareTrait;
 }

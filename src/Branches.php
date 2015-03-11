@@ -10,7 +10,7 @@
 
 namespace Branches;
 
-use Branches\Extension\BranchesAwareExtensionInterface;
+use Branches\Component\BranchesAwareInterface;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;
@@ -196,7 +196,7 @@ class Branches
      */
     public function useExtension(ExtensionInterface $extension)
     {
-        if($extension instanceof BranchesAwareExtensionInterface) {
+        if($extension instanceof BranchesAwareInterface) {
             $extension->setBranches($this);
         }
 
