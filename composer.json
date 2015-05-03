@@ -22,7 +22,8 @@
             "lib/joinPaths.php"
         ],
         "psr-4": {
-            "Branches\\": "src"
+            "Branches\\": "src",
+            "Branches\\Extension\\": "extension"
         }
     }
 }

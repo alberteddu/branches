@@ -53,4 +53,20 @@ trait PropertyHolderTrait
     {
         return isset($this->properties[$name]);
     }
+
+    /**
+     * @param array $properties
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
 }

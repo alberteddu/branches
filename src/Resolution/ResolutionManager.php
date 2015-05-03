@@ -16,6 +16,8 @@ use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ResolutionExtensionInterface;
 use Branches\Manager\Manager;
 use Branches\Node\NodeInterface;
+use Branches\Resolution\Filter\ResolutionFilterInterface;
+use Branches\Url\Url;
 
 /**
  * Class ResolutionManager
@@ -35,15 +37,16 @@ class ResolutionManager extends Manager
     }
 
     /**
-     * @param string              $url
+     * @param Url                 $url
      * @param ResolutionInterface $resolution
      *
      * @return ResolutionInterface
      */
-    public function filterResolution($url, ResolutionInterface $resolution)
+    public function filterResolution(Url $url, ResolutionInterface $resolution)
     {
         $originalResolution = $resolution;
 
+        /** @var ResolutionFilterInterface $resolutionFilter */
         foreach ($this->getResolutionFilters() as $resolutionFilter) {
             $resolution = $resolutionFilter->filter($url, $resolution, $originalResolution);
         }
@@ -56,8 +59,8 @@ class ResolutionManager extends Manager
      */
     public function getResolutionFilters()
     {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
-            if($extension instanceof ResolutionExtensionInterface) {
+        return $this->branches->getExtensionManager()->collect(function (ExtensionInterface $extension, ComponentHolder $queue) {
+            if ($extension instanceof ResolutionExtensionInterface) {
                 $extension->getResolutionFilters($queue);
             }
         });

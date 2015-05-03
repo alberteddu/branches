@@ -11,6 +11,7 @@
 namespace Branches\Resolution\Filter;
 
 use Branches\Resolution\ResolutionInterface;
+use Branches\Url\Url;
 
 /**
  * Interface ResolutionFilterInterface
@@ -20,11 +21,11 @@ use Branches\Resolution\ResolutionInterface;
 interface ResolutionFilterInterface
 {
     /**
-     * @param string              $url
+     * @param Url                 $url
      * @param ResolutionInterface $resolution
      * @param ResolutionInterface $originalResolution
      *
      * @return ResolutionInterface
      */
-    public function filter($url, ResolutionInterface $resolution, ResolutionInterface $originalResolution);
+    public function filter(Url $url, ResolutionInterface $resolution, ResolutionInterface $originalResolution);
 }

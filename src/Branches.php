@@ -12,6 +12,7 @@ namespace Branches;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Directory\InvalidDirectoryException;
+use Branches\Extension\DynamicPostResolutionExtension;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;
@@ -88,6 +89,7 @@ class Branches
         $this->extensionManager  = new ExtensionManager($this);
 
         $this->useExtension(new UrlSegmentEqualityVoter());
+        $this->useExtension(new DynamicPostResolutionExtension());
     }
 
     /**
@@ -98,6 +100,18 @@ class Branches
     public static function isDirectoryValid($directory)
     {
         return is_dir($directory) and is_readable($directory);
+    }
+
+    /**
+     * @param ExtensionInterface $extension
+     */
+    public function useExtension(ExtensionInterface $extension)
+    {
+        if ($extension instanceof BranchesAwareInterface) {
+            $extension->setBranches($this);
+        }
+
+        $this->extensionManager->register($extension->getName(), $extension);
     }
 
     /**
@@ -190,18 +204,6 @@ class Branches
     public function getResolutionManager()
     {
         return $this->resolutionManager;
-    }
-
-    /**
-     * @param ExtensionInterface $extension
-     */
-    public function useExtension(ExtensionInterface $extension)
-    {
-        if($extension instanceof BranchesAwareInterface) {
-            $extension->setBranches($this);
-        }
-
-        $this->extensionManager->register($extension->getName(), $extension);
     }
 
     /**

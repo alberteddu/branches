@@ -10,6 +10,9 @@
 
 namespace Branches\Dynamic;
 
+use Branches\Node\FileInterface;
+use Branches\Url\Url;
+
 /**
  * Interface DynamicFileProviderInterface
  *
@@ -17,4 +20,10 @@ namespace Branches\Dynamic;
  */
 interface DynamicFileProviderInterface extends DynamicNodeProviderInterface
 {
+    /**
+     * @param Url $url
+     *
+     * @return FileInterface[]
+     */
+    public function provide(Url $url);
 }

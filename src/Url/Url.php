@@ -30,6 +30,14 @@ class Url
 
     /**
      * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = self::cleanUrl($url);
+    }
+
+    /**
+     * @param string $url
      *
      * @return string
      */
@@ -75,9 +83,32 @@ class Url
 
     /**
      * @param string $url
+     *
+     * @return Url
      */
-    public function setUrl($url)
+    public function append($url)
     {
-        $this->url = self::cleanUrl($url);
+        return new Url(\joinPaths($this->url, $url));
+    }
+
+    /**
+     * @param Url $url
+     *
+     * @return bool
+     */
+    public function is(Url $url)
+    {
+        return $this == $url;
+    }
+
+    /**
+     * @param string $pattern
+     * @param array  $matches
+     *
+     * @return int
+     */
+    public function match($pattern, array &$matches = null)
+    {
+        return preg_match($pattern, $this->url, $matches);
     }
 }

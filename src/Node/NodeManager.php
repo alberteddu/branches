@@ -38,12 +38,13 @@ class NodeManager extends Manager
      * @param string $path
      * @param string $url
      * @param string $nodeType
+     * @param bool   $isAbstract
      *
      * @return PostListInterface
      *
      * @throws BadMethodCallException if $nodeType is not valid (see NodeType::*).
      */
-    public function getNodesAt($path, $url, $nodeType)
+    public function getNodesAt($path, $url, $nodeType, $isAbstract = false)
     {
         if (!in_array($nodeType, array(NodeType::POST, NodeType::FILE))) {
             throw new BadMethodCallException('Invalid node type');
@@ -51,32 +52,45 @@ class NodeManager extends Manager
 
         $nodes = array();
 
-        /** @var DirectoryIterator $nodePath */
-        foreach (new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS) as $nodePath) {
-            try {
-                $node = $this->get(\joinPaths($url, $nodePath->getBasename()));
+        if(!$isAbstract) {
+            /** @var DirectoryIterator $nodePath */
+            foreach (new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS) as $nodePath) {
+                try {
+                    $node = $this->get(\joinPaths($url, $nodePath->getBasename()));
 
-                if (NodeType::POST === $nodeType and $node instanceof PostInterface) {
-                    $nodes[] = $node;
-                } elseif (NodeType::FILE === $nodeType and $node instanceof FileInterface) {
-                    $nodes[] = $node;
+                    if (NodeType::POST === $nodeType and $node instanceof PostInterface) {
+                        $nodes[] = $node;
+                    } elseif (NodeType::FILE === $nodeType and $node instanceof FileInterface) {
+                        $nodes[] = $node;
+                    }
+                } catch(NodeNotFoundException $e) {
+                    // We ignore non existing files.
                 }
-            } catch(NodeNotFoundException $e) {
-                // We ignore non existing files.
             }
         }
+
+        $urlObject = new Url($url);
 
         if (NodeType::POST === $nodeType) {
             $listProvider     = $this->branches->getPostListProvider();
             $dynamicProviders = $this->getDynamicPostProviders();
+
+            /** @var DynamicPostProviderInterface $dynamicProvider */
+            foreach($dynamicProviders as $dynamicProvider) {
+                foreach($dynamicProvider->provide($urlObject) as $dynamicPost) {
+                    $newAbstractPost = new AbstractPost($this->branches, $urlObject, $dynamicPost->getSegment());
+                    $newAbstractPost->setProperties($dynamicPost->getProperties());
+                    $nodes[] = $newAbstractPost;
+                }
+            }
         } else {
             $listProvider     = $this->branches->getFileListProvider();
             $dynamicProviders = $this->getDynamicFileProviders();
-        }
 
-        /** @var DynamicNodeProviderInterface $dynamicProvider */
-        foreach ($dynamicProviders as $dynamicProvider) {
-            $nodes = array_merge($nodes, $dynamicProvider->provide(new Url($url)));
+            /** @var DynamicFileProviderInterface $dynamicProvider */
+            foreach ($dynamicProviders as $dynamicProvider) {
+                $nodes = array_merge($nodes, $dynamicProvider->provide(new Url($url)));
+            }
         }
 
         return $listProvider->provide($nodes);
@@ -123,6 +137,30 @@ class NodeManager extends Manager
     }
 
     /**
+     * @return ComponentHolder
+     */
+    public function getDynamicPostProviders()
+    {
+        return $this->branches->getExtensionManager()->collect(function (ExtensionInterface $extension, ComponentHolder $queue) {
+            if ($extension instanceof DynamicNodeExtensionInterface) {
+                $extension->getDynamicPostProviders($queue);
+            }
+        });
+    }
+
+    /**
+     * @return ComponentHolder
+     */
+    public function getDynamicFileProviders()
+    {
+        return $this->branches->getExtensionManager()->collect(function (ExtensionInterface $extension, ComponentHolder $queue) {
+            if ($extension instanceof DynamicNodeExtensionInterface) {
+                $extension->getDynamicFileProviders($queue);
+            }
+        });
+    }
+
+    /**
      * @param DynamicPostProviderInterface $dynamicPostProvider
      */
     public function addDynamicPostProvider(DynamicPostProviderInterface $dynamicPostProvider)
@@ -136,29 +174,5 @@ class NodeManager extends Manager
     public function addDynamicFileProvider(DynamicFileProviderInterface $dynamicFileProvider)
     {
         $this->dynamicFileProviders[] = $dynamicFileProvider;
-    }
-
-    /**
-     * @return ComponentHolder
-     */
-    public function getDynamicPostProviders()
-    {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
-            if($extension instanceof DynamicNodeExtensionInterface) {
-                $extension->getDynamicPostProviders($queue);
-            }
-        });
-    }
-
-    /**
-     * @return ComponentHolder
-     */
-    public function getDynamicFileProviders()
-    {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
-            if($extension instanceof DynamicNodeExtensionInterface) {
-                $extension->getDynamicFileProviders($queue);
-            }
-        });
     }
 }

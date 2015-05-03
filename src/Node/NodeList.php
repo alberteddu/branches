@@ -11,6 +11,7 @@
 namespace Branches\Node;
 
 use ArrayIterator;
+use ArrayObject;
 use Branches\Branches;
 use Branches\Provider\NodeListProviderInterface;
 use IteratorAggregate;
@@ -20,7 +21,7 @@ use IteratorAggregate;
  *
  * @package Branches\Node
  */
-abstract class NodeList implements NodeListInterface, IteratorAggregate
+abstract class NodeList extends ArrayObject implements NodeListInterface
 {
     /** @var Branches */
     protected $branches;
@@ -32,14 +33,8 @@ abstract class NodeList implements NodeListInterface, IteratorAggregate
     {
         $this->branches = $branches;
         $this->elements = $elements;
-    }
 
-    /**
-     * @return integer
-     */
-    public function count()
-    {
-        return count($this->elements);
+        parent::__construct($this->elements);
     }
 
     /**
@@ -72,22 +67,6 @@ abstract class NodeList implements NodeListInterface, IteratorAggregate
         return $this->filter(function (NodeInterface $eachNode) use ($node) {
             $eachNode->is($node);
         });
-    }
-
-    /**
-     * @return array
-     */
-    public function asArray()
-    {
-        return $this->elements;
-    }
-
-    /**
-     * @return ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->elements);
     }
 
     /**
