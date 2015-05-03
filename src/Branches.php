@@ -29,7 +29,6 @@ use Branches\Provider\PostProviderInterface;
 use Branches\Resolution\ResolutionManager;
 use Branches\Url\UrlManager;
 use Branches\Url\Vote\UrlSegmentEqualityVoter;
-use Exception;
 
 /**
  * Class Branches

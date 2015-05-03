@@ -23,7 +23,7 @@ use Branches\Vote\VoteResult;
  *
  * @package Branches\Url\Vote
  */
-class UrlSegmentEqualityVoter extends UrlSegmentVoter implements ExtensionInterface, UrlExtensionInterface, UrlSegmentVoterInterface
+class UrlSegmentEqualityVoter extends UrlSegmentVoter implements ExtensionInterface, UrlExtensionInterface
 {
     /**
      * @return string
