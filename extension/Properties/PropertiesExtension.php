@@ -8,24 +8,24 @@
  * @license  MIT
  */
 
-namespace Branches\Extension\DynamicPost;
+namespace Branches\Extension\Properties;
 
 use Branches\Component\ComponentHolder;
 use Branches\Extension\Extension;
 use Branches\Extension\ResolutionExtensionInterface;
 
 /**
- * Class DynamicPostResolutionExtension
+ * Class PropertiesExtension
  *
- * @package Branches\Extension\DynamicPost
+ * @package Branches\Extension\Properties
  */
-class DynamicPostResolutionExtension extends Extension implements ResolutionExtensionInterface {
+class PropertiesExtension extends Extension implements ResolutionExtensionInterface {
     /**
      * @return string
      */
     public function getName()
     {
-        return 'branches-dynamic-post-resolution';
+        return 'branches-properties';
     }
 
     /**
@@ -33,6 +33,6 @@ class DynamicPostResolutionExtension extends Extension implements ResolutionExte
      */
     public function getResolutionFilters(ComponentHolder $queue)
     {
-        $queue->insert(new DynamicPostResolutionFilter());
+        $queue->insert(new PropertiesResolutionFilter(), -1000);
     }
 }

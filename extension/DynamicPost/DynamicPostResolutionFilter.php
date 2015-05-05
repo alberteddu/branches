@@ -22,6 +22,11 @@ use Branches\Resolution\ResolutionInterface;
 use Branches\Resolution\ResolutionType;
 use Branches\Url\Url;
 
+/**
+ * Class DynamicPostResolutionFilter
+ *
+ * @package Branches\Extension\DynamicPost
+ */
 class DynamicPostResolutionFilter implements ResolutionFilterInterface, BranchesAwareInterface
 {
     use BranchesAwareTrait;

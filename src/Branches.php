@@ -15,6 +15,7 @@ use Branches\Directory\InvalidDirectoryException;
 use Branches\Extension\DynamicPost\DynamicPostResolutionExtension;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
+use Branches\Extension\Properties\PropertiesExtension;
 use Branches\Node\NodeInterface;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\NodeManager;
@@ -89,6 +90,7 @@ class Branches
 
         $this->useExtension(new UrlSegmentEqualityVoter());
         $this->useExtension(new DynamicPostResolutionExtension());
+        $this->useExtension(new PropertiesExtension());
     }
 
     /**

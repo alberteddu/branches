@@ -22,5 +22,8 @@
             "Branches\\": "src",
             "Branches\\Extension\\": "extension"
         }
+    },
+    "require": {
+        "mnapoli/front-yaml": "^1.5"
     }
 }

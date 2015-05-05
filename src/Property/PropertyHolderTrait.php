@@ -57,9 +57,17 @@ trait PropertyHolderTrait
     /**
      * @param array $properties
      */
-    public function setProperties($properties)
+    public function setProperties(array $properties)
     {
         $this->properties = $properties;
+    }
+
+    /**
+     * @param array $properties
+     */
+    public function mergeProperties(array $properties)
+    {
+        $this->setProperties(array_merge($this->getProperties(), $properties));
     }
 
     /**

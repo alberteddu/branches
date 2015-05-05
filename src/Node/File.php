@@ -27,4 +27,22 @@ class File extends Node implements FileInterface
     {
         return $this->branches->get((string) $this->getUrl()->sliceSegments(0, -1));
     }
+
+    /**
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->getPathInfo(PATHINFO_EXTENSION);
+    }
+
+    /**
+     * @param null $options
+     *
+     * @return mixed
+     */
+    public function getPathInfo($options = null)
+    {
+        return pathinfo($this->getPath(), $options);
+    }
 }
