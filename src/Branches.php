@@ -89,8 +89,6 @@ class Branches
         $this->extensionManager  = new ExtensionManager($this);
 
         $this->useExtension(new UrlSegmentEqualityVoter());
-        $this->useExtension(new DynamicPostResolutionExtension());
-        $this->useExtension(new PropertiesExtension());
     }
 
     /**
