@@ -88,7 +88,7 @@ class Url
      */
     public function append($url)
     {
-        return new Url(\joinPaths($this->url, $url));
+        return new Url(UrlManager::join($this->url, $url));
     }
 
     /**

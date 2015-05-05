@@ -23,6 +23,7 @@ use Branches\Resolution\FileResolution;
 use Branches\Resolution\NotFoundResolution;
 use Branches\Resolution\PostResolution;
 use Branches\Url\Url;
+use Branches\Url\UrlManager;
 use DirectoryIterator;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
@@ -56,7 +57,7 @@ class NodeManager extends Manager
             /** @var DirectoryIterator $nodePath */
             foreach (new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS) as $nodePath) {
                 try {
-                    $node = $this->get(\joinPaths($url, $nodePath->getBasename()));
+                    $node = $this->get(UrlManager::join($url, $nodePath->getBasename()));
 
                     if (NodeType::POST === $nodeType and $node instanceof PostInterface) {
                         $nodes[] = $node;

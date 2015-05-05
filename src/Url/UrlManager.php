@@ -89,12 +89,24 @@ class UrlManager extends Manager
             }
 
             if ($urlSegmentVoter->vote() === VoteResult::YES) {
-                $result = true;
+                $result         = true;
                 $realUrlSegment = $urlSegmentVoter->transformSegment($urlSegment);
             }
         }
 
         return $result ? $realUrlSegment : false;
+    }
+
+    /**
+     * @return ComponentHolder
+     */
+    public function getUrlSegmentVoters()
+    {
+        return $this->branches->getExtensionManager()->collect(function (ExtensionInterface $extension, ComponentHolder $queue) {
+            if ($extension instanceof UrlExtensionInterface) {
+                $extension->getUrlSegmentVoters($queue);
+            }
+        });
     }
 
     /**
@@ -106,18 +118,35 @@ class UrlManager extends Manager
 
         array_unshift($segments, $this->branches->getPath());
 
-        return call_user_func_array('\joinPaths', $segments);
+        return UrlManager::joinFromArray($segments);
     }
 
     /**
-     * @return ComponentHolder
+     * @author Riccardo Galli
+     * @link   http://stackoverflow.com/a/15575293/223090
+     *
+     * @return string
      */
-    public function getUrlSegmentVoters()
+    public static function join()
     {
-        return $this->branches->getExtensionManager()->collect(function(ExtensionInterface $extension, ComponentHolder $queue) {
-            if($extension instanceof UrlExtensionInterface) {
-                $extension->getUrlSegmentVoters($queue);
+        $paths = array();
+
+        foreach (func_get_args() as $arg) {
+            if ($arg !== '') {
+                $paths[] = $arg;
             }
-        });
+        }
+
+        return preg_replace('#/+#', '/', join('/', $paths));
+    }
+
+    /**
+     * @param array $segments
+     *
+     * @return string
+     */
+    public static function joinFromArray(array $segments)
+    {
+        return call_user_func_array(array(__CLASS__, 'join'), $segments);
     }
 }
