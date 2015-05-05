@@ -18,9 +18,6 @@
         "psy/psysh": "@stable"
     },
     "autoload": {
-        "files": [
-            "lib/joinPaths.php"
-        ],
         "psr-4": {
             "Branches\\": "src",
             "Branches\\Extension\\": "extension"
