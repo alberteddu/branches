@@ -8,9 +8,11 @@
  * @license  MIT
  */
 
-namespace Branches\Extension;
+namespace Branches\Extension\DynamicPost;
 
 use Branches\Component\ComponentHolder;
+use Branches\Extension\Extension;
+use Branches\Extension\ResolutionExtensionInterface;
 
 class DynamicPostResolutionExtension extends Extension implements ResolutionExtensionInterface {
 

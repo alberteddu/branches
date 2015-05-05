@@ -8,12 +8,11 @@
  * @license  MIT
  */
 
-namespace Branches\Extension;
+namespace Branches\Extension\DynamicPost;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Component\BranchesAwareTrait;
 use Branches\Node\AbstractPost;
-use Branches\Node\FileInterface;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\Post;
 use Branches\Node\PostInterface;

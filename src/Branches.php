@@ -12,7 +12,7 @@ namespace Branches;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Directory\InvalidDirectoryException;
-use Branches\Extension\DynamicPostResolutionExtension;
+use Branches\Extension\DynamicPost\DynamicPostResolutionExtension;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
 use Branches\Node\NodeInterface;

@@ -118,7 +118,7 @@ class UrlManager extends Manager
 
         array_unshift($segments, $this->branches->getPath());
 
-        return UrlManager::joinFromArray($segments);
+        return static::joinFromArray($segments);
     }
 
     /**
