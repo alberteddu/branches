@@ -43,7 +43,7 @@ class Url
      */
     public static function cleanUrl($url)
     {
-        return preg_replace('#/+#', '/', $url);
+        return '/' . preg_replace('#/+#', '/', $url);
     }
 
     /**
