@@ -21,6 +21,14 @@ use Branches\Property\PropertyHolderTrait;
 class File extends Node implements FileInterface
 {
     /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return file_get_contents($this->getPath());
+    }
+
+    /**
      * @return PostInterface
      */
     public function getPost()
@@ -34,6 +42,16 @@ class File extends Node implements FileInterface
     public function getExtension()
     {
         return $this->getPathInfo(PATHINFO_EXTENSION);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMimeType()
+    {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+        return finfo_file($finfo, $this->getPath());
     }
 
     /**
