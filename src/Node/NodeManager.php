@@ -14,7 +14,6 @@ use BadMethodCallException;
 use Branches\Branches;
 use Branches\Component\ComponentHolder;
 use Branches\Dynamic\DynamicFileProviderInterface;
-use Branches\Dynamic\DynamicNodeProviderInterface;
 use Branches\Dynamic\DynamicPostProviderInterface;
 use Branches\Extension\DynamicNodeExtensionInterface;
 use Branches\Extension\ExtensionInterface;
@@ -159,21 +158,5 @@ class NodeManager extends Manager
                 $extension->getDynamicFileProviders($queue);
             }
         });
-    }
-
-    /**
-     * @param DynamicPostProviderInterface $dynamicPostProvider
-     */
-    public function addDynamicPostProvider(DynamicPostProviderInterface $dynamicPostProvider)
-    {
-        $this->dynamicPostProviders[] = $dynamicPostProvider;
-    }
-
-    /**
-     * @param DynamicFileProviderInterface $dynamicFileProvider
-     */
-    public function addDynamicFileProvider(DynamicFileProviderInterface $dynamicFileProvider)
-    {
-        $this->dynamicFileProviders[] = $dynamicFileProvider;
     }
 }
