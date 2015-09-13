@@ -21,8 +21,8 @@ trait PropertyHolderTrait
     protected $properties = array();
 
     /**
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param mixed $value
      */
     public function setProperty($name, $value)
     {
@@ -30,8 +30,8 @@ trait PropertyHolderTrait
     }
 
     /**
-     * @param $name
-     * @param $default
+     * @param string $name
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -45,7 +45,7 @@ trait PropertyHolderTrait
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
      * @return bool
      */
