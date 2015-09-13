@@ -11,6 +11,7 @@
 namespace Branches\Dynamic;
 
 use Branches\Node\AbstractPost;
+use Branches\Node\PostInterface;
 use Branches\Url\Url;
 
 /**
@@ -22,8 +23,9 @@ interface DynamicPostProviderInterface extends DynamicNodeProviderInterface
 {
     /**
      * @param Url $url
+     * @oaram PostInterface $post
      *
      * @return DynamicPost[]
      */
-    public function provide(Url $url);
+    public function provide(Url $url, PostInterface $post);
 }

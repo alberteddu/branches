@@ -82,7 +82,7 @@ trait PropertyHolderTrait
      *
      * @see https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/drupal_array_merge_deep_array/7
      */
-    protected static function deepMergeProperties($arrays)
+    public static function deepMergeProperties($arrays)
     {
         $result = array();
 

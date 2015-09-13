@@ -70,7 +70,7 @@ class PropertiesResolutionFilter implements ResolutionFilterInterface, BranchesA
 
             if ($post instanceof Post and !$post instanceof AbstractPost) {
                 /** @var File $attachment */
-                foreach ($post->getAttachments() as $attachment) {
+                foreach ($post->getAttachments(true) as $attachment) {
                     if (in_array($attachment->getExtension(), $this->extensions)) {
                         $post->mergeProperties($this->postFileParser->parse($attachment->getPath()));
 

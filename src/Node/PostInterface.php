@@ -28,12 +28,16 @@ interface PostInterface extends NodeInterface
     public function getSiblings();
 
     /**
+     * @param bool $skipDynamic
+     *
      * @return PostListInterface
      */
-    public function getChildren();
+    public function getChildren($skipDynamic = false);
 
     /**
+     * @param bool $skipDynamic
+     *
      * @return FileListInterface
      */
-    public function getAttachments();
+    public function getAttachments($skipDynamic = false);
 }

@@ -48,18 +48,18 @@ class Post extends Node implements PostInterface
     }
 
     /**
-     * @return PostListInterface
+     * @inheritdoc
      */
-    public function getChildren()
+    public function getChildren($skipDynamic = false)
     {
-        return $this->branches->getNodeManager()->getNodesAt($this->getPath(), $this->getUrl(), NodeType::POST);
+        return $this->branches->getNodeManager()->getNodesAt($this, $this->getPath(), $this->getUrl(), NodeType::POST, false, $skipDynamic);
     }
 
     /**
-     * @return PostListInterface
+     * @inheritdoc
      */
-    public function getAttachments()
+    public function getAttachments($skipDynamic = false)
     {
-        return $this->branches->getNodeManager()->getNodesAt($this->getPath(), $this->getUrl(), NodeType::FILE);
+        return $this->branches->getNodeManager()->getNodesAt($this, $this->getPath(), $this->getUrl(), NodeType::FILE, false, $skipDynamic);
     }
 }

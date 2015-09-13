@@ -35,16 +35,18 @@ use RecursiveDirectoryIterator;
 class NodeManager extends Manager
 {
     /**
-     * @param string $path
-     * @param string $url
-     * @param string $nodeType
-     * @param bool   $isAbstract
+     * @param PostInterface $parentPost
+     * @param string        $path
+     * @param string        $url
+     * @param string        $nodeType
+     * @param bool          $isAbstract
+     * @param bool          $skipDynamic
      *
      * @return PostListInterface
      *
      * @throws BadMethodCallException if $nodeType is not valid (see NodeType::*).
      */
-    public function getNodesAt($path, $url, $nodeType, $isAbstract = false)
+    public function getNodesAt(PostInterface $parentPost, $path, $url, $nodeType, $isAbstract = false, $skipDynamic = false)
     {
         if (!in_array($nodeType, array(NodeType::POST, NodeType::FILE))) {
             throw new BadMethodCallException('Invalid node type');
@@ -52,7 +54,7 @@ class NodeManager extends Manager
 
         $nodes = array();
 
-        if(!$isAbstract) {
+        if (!$isAbstract) {
             /** @var DirectoryIterator $nodePath */
             foreach (new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS) as $nodePath) {
                 try {
@@ -76,8 +78,8 @@ class NodeManager extends Manager
             $dynamicProviders = $this->getDynamicPostProviders();
 
             /** @var DynamicPostProviderInterface $dynamicProvider */
-            foreach($dynamicProviders as $dynamicProvider) {
-                foreach($dynamicProvider->provide($urlObject) as $dynamicPost) {
+            foreach ($dynamicProviders as $dynamicProvider) {
+                foreach ($dynamicProvider->provide($urlObject, $parentPost) as $dynamicPost) {
                     $newAbstractPost = new AbstractPost($this->branches, $urlObject, $dynamicPost->getSegment());
                     $newAbstractPost->setProperties($dynamicPost->getProperties());
                     $nodes[] = $newAbstractPost;
@@ -89,7 +91,7 @@ class NodeManager extends Manager
 
             /** @var DynamicFileProviderInterface $dynamicProvider */
             foreach ($dynamicProviders as $dynamicProvider) {
-                $nodes = array_merge($nodes, $dynamicProvider->provide(new Url($url)));
+                $nodes = array_merge($nodes, $dynamicProvider->provide(new Url($url), $parentPost));
             }
         }
 

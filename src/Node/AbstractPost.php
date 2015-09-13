@@ -44,18 +44,18 @@ class AbstractPost extends Post
     }
 
     /**
-     * @return PostListInterface
+     * @inheritdoc
      */
-    public function getChildren()
+    public function getChildren($skipDynamic = false)
     {
-        return $this->branches->getNodeManager()->getNodesAt($this->getPath(), $this->getUrl(), NodeType::POST, true);
+        return $this->branches->getNodeManager()->getNodesAt($this, $this->getPath(), $this->getUrl(), NodeType::POST, true, $skipDynamic);
     }
 
     /**
-     * @return PostListInterface
+     * @inheritdoc
      */
-    public function getAttachments()
+    public function getAttachments($skipDynamic = false)
     {
-        return $this->branches->getNodeManager()->getNodesAt($this->getPath(), $this->getUrl(), NodeType::FILE, true);
+        return $this->branches->getNodeManager()->getNodesAt($this, $this->getPath(), $this->getUrl(), NodeType::FILE, true, $skipDynamic);
     }
 }

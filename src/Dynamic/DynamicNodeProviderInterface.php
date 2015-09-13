@@ -10,6 +10,7 @@
 
 namespace Branches\Dynamic;
 
+use Branches\Node\PostInterface;
 use Branches\Url\Url;
 
 /**
@@ -20,9 +21,10 @@ use Branches\Url\Url;
 interface DynamicNodeProviderInterface
 {
     /**
-     * @param Url $url
+     * @param Url           $url
+     * @param PostInterface $post
      *
      * @return array
      */
-    public function provide(Url $url);
+    public function provide(Url $url, PostInterface $post);
 }
