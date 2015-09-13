@@ -49,9 +49,7 @@ class File extends Node implements FileInterface
      */
     public function getMimeType()
     {
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-
-        return finfo_file($finfo, $this->getPath());
+        return MimeType::getMimeType($this->getExtension());
     }
 
     /**
