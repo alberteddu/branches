@@ -25,7 +25,7 @@ interface DynamicFileProviderInterface extends DynamicNodeProviderInterface
      * @param Url           $url
      * @param PostInterface $post
      *
-     * @return FileInterface[]
+     * @return DynamicFile[]
      */
     public function provide(Url $url, PostInterface $post);
 }

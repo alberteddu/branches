@@ -13,7 +13,9 @@ namespace Branches\Node;
 use BadMethodCallException;
 use Branches\Branches;
 use Branches\Component\ComponentHolder;
+use Branches\Dynamic\DynamicFile;
 use Branches\Dynamic\DynamicFileProviderInterface;
+use Branches\Dynamic\DynamicPost;
 use Branches\Dynamic\DynamicPostProviderInterface;
 use Branches\Extension\DynamicNodeExtensionInterface;
 use Branches\Extension\ExtensionInterface;
@@ -79,6 +81,7 @@ class NodeManager extends Manager
 
             /** @var DynamicPostProviderInterface $dynamicProvider */
             foreach ($dynamicProviders as $dynamicProvider) {
+                /** @var DynamicPost $dynamicPost */
                 foreach ($dynamicProvider->provide($urlObject, $parentPost) as $dynamicPost) {
                     $newAbstractPost = new AbstractPost($this->branches, $urlObject, $dynamicPost->getSegment());
                     $newAbstractPost->setProperties($dynamicPost->getProperties());
@@ -91,7 +94,10 @@ class NodeManager extends Manager
 
             /** @var DynamicFileProviderInterface $dynamicProvider */
             foreach ($dynamicProviders as $dynamicProvider) {
-                $nodes = array_merge($nodes, $dynamicProvider->provide(new Url($url), $parentPost));
+                /** @var DynamicFile $dynamicFile */
+                foreach ($dynamicProvider->provide($urlObject, $parentPost) as $dynamicFile) {
+                    $nodes[] = new AbstractFile($this->branches, $urlObject, $dynamicFile->getSegment());
+                }
             }
         }
 

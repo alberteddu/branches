@@ -69,7 +69,7 @@ trait PropertyHolderTrait
     public function mergeProperties(array $properties, $deep = true)
     {
         if ($deep) {
-            $this->setProperties(self::deepMergeProperties(array($this->getProperties(), $properties)));
+            $this->setProperties(self::deepMergeProperties($this->getProperties(), $properties));
         } else {
             $this->setProperties(array_merge($this->getProperties(), $properties));
         }
@@ -82,7 +82,7 @@ trait PropertyHolderTrait
      *
      * @see https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/drupal_array_merge_deep_array/7
      */
-    public static function deepMergeProperties($arrays)
+    public static function deepMergePropertiesArray($arrays)
     {
         $result = array();
 
@@ -95,7 +95,7 @@ trait PropertyHolderTrait
                     $result[] = $value;
                 } // Recurse when both values are arrays.
                 elseif (isset($result [$key]) && is_array($result [$key]) && is_array($value)) {
-                    $result[$key] = self::deepMergeProperties(array($result [$key], $value));
+                    $result[$key] = self::deepMergePropertiesArray(array($result [$key], $value));
                 } // Otherwise, use the latter value, overriding any previous value.
                 else {
                     $result[$key] = $value;
@@ -104,6 +104,14 @@ trait PropertyHolderTrait
         }
 
         return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public static function deepMergeProperties()
+    {
+        return self::deepMergePropertiesArray(func_get_args());
     }
 
     /**

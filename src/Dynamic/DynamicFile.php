@@ -15,10 +15,10 @@ use Branches\Property\PropertyHolderTrait;
 use Branches\Url\Url;
 
 /**
- * Class DynamicPost
+ * Class DynamicFile
  *
  * @package Branches\Dynamic
  */
-class DynamicPost extends DynamicNode
+class DynamicFile extends DynamicNode
 {
 }

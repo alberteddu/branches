@@ -1022,4 +1022,14 @@ class MimeType
 
         return self::$mimeTypes[$extension];
     }
+
+    /**
+     * @param string $path
+     *
+     * @return string
+     */
+    public static function getMimeTypeForPath($path)
+    {
+        return self::getMimeType(pathinfo($path, PATHINFO_EXTENSION));
+    }
 }

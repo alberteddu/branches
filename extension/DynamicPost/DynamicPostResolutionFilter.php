@@ -13,9 +13,11 @@ namespace Branches\Extension\DynamicPost;
 use Branches\Component\BranchesAwareInterface;
 use Branches\Component\BranchesAwareTrait;
 use Branches\Node\AbstractPost;
+use Branches\Node\File;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\Post;
 use Branches\Node\PostInterface;
+use Branches\Resolution\FileResolution;
 use Branches\Resolution\Filter\ResolutionFilterInterface;
 use Branches\Resolution\PostResolution;
 use Branches\Resolution\ResolutionInterface;
@@ -42,8 +44,6 @@ class DynamicPostResolutionFilter implements ResolutionFilterInterface, Branches
     {
         if ($resolution->getResolutionType() == ResolutionType::NOT_FOUND) {
             $parentUrl   = $url->sliceSegments(0, -1);
-            $segments    = $url->getSegments();
-            $lastSegment = $segments[count($segments) - 1];
 
             try {
                 $parent = $this->branches->get($parentUrl);
@@ -52,7 +52,14 @@ class DynamicPostResolutionFilter implements ResolutionFilterInterface, Branches
                     /** @var Post $child */
                     foreach ($parent->getChildren() as $child) {
                         if ($child->getUrl()->is($url)) {
-                            return new PostResolution(new AbstractPost($this->branches, $parentUrl, $lastSegment));
+                            return new PostResolution($child);
+                        }
+                    }
+
+                    /** @var File $file */
+                    foreach ($parent->getAttachments() as $file) {
+                        if ($file->getUrl()->is($url)) {
+                            return new FileResolution($file);
                         }
                     }
                 }

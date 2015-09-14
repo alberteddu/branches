@@ -43,7 +43,7 @@ class Url
      */
     public static function cleanUrl($url)
     {
-        return '/' . preg_replace('#/+#', '/', $url);
+        return preg_replace('#/+#', '/', '/' . $url);
     }
 
     /**
@@ -62,7 +62,21 @@ class Url
      */
     public function getSegments()
     {
-        return array_filter(explode('/', $this->url));
+        return array_values(array_filter(explode('/', $this->url)));
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastSegment()
+    {
+        $segments = $this->getSegments();
+
+        if (count($segments) == 0) {
+            return null;
+        }
+
+        return $segments[count($segments) - 1];
     }
 
     /**
