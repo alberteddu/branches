@@ -11,12 +11,6 @@
             "homepage": "http://albertopiu.com"
         }
     ],
-    "require-dev": {
-        "phing/phing": "*",
-        "phpunit/phpunit": "*",
-        "squizlabs/php_codesniffer": "2.*",
-        "psy/psysh": "@stable"
-    },
     "autoload": {
         "psr-4": {
             "Branches\\": "src",
