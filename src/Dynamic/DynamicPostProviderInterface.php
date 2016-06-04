@@ -10,7 +10,6 @@
 
 namespace Branches\Dynamic;
 
-use Branches\Node\AbstractPost;
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 

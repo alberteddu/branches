@@ -10,9 +10,6 @@
 
 namespace Branches\Url\Vote;
 
-use Branches\Branches;
-use Branches\Component\BranchesAwareInterface;
-use Branches\Component\BranchesAwareTrait;
 use Branches\Component\ComponentHolder;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\UrlExtensionInterface;

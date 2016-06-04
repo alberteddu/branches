@@ -17,5 +17,4 @@ namespace Branches\Extension;
  */
 abstract class Extension implements ExtensionInterface
 {
-
 }

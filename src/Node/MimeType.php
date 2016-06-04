@@ -17,6 +17,9 @@ namespace Branches\Node;
  */
 class MimeType
 {
+    /**
+     * @var array
+     */
     protected static $mimeTypes = array(
         'ez'          => 'application/andrew-inset',
         'aw'          => 'application/applixware',

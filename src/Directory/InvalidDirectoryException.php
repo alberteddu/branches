@@ -19,7 +19,9 @@ use Exception;
  */
 class InvalidDirectoryException extends Exception
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $directory;
 
     /**

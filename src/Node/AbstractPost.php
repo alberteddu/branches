@@ -20,7 +20,9 @@ use Branches\Url\Url;
  */
 class AbstractPost extends Post
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $segment;
 
     /**

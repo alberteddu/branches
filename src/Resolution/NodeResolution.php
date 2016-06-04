@@ -19,7 +19,9 @@ use Branches\Node\NodeInterface;
  */
 abstract class NodeResolution implements ResolutionInterface
 {
-    /** @var NodeInterface */
+    /**
+     * @var NodeInterface
+     */
     private $node;
 
     /**

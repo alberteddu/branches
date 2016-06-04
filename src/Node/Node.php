@@ -23,15 +23,26 @@ abstract class Node implements NodeInterface
 {
     use PropertyHolderTrait;
 
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
-    /** @var Url */
+    /**
+     * @var Url
+     */
     protected $url;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $path;
 
+    /**
+     * @param Branches $branches
+     * @param Url      $url
+     * @param string   $path
+     */
     public function __construct(Branches $branches, Url $url, $path)
     {
         $this->branches = $branches;

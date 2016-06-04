@@ -21,9 +21,14 @@ use Branches\Node\PostListInterface;
  */
 class PostListProvider implements PostListProviderInterface
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
+    /**
+     * @param Branches $branches
+     */
     public function __construct(Branches $branches)
     {
         $this->branches = $branches;

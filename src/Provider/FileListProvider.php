@@ -21,7 +21,9 @@ use Branches\Node\FileListInterface;
  */
 class FileListProvider implements FileListProviderInterface
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
     public function __construct(Branches $branches)

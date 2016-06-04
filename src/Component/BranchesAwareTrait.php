@@ -19,7 +19,9 @@ use Branches\Branches;
  */
 trait BranchesAwareTrait
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
     /**

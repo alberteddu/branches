@@ -17,5 +17,4 @@ namespace Branches\Node;
  */
 interface PostListInterface extends NodeListInterface
 {
-
 }

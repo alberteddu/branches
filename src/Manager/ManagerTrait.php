@@ -19,7 +19,9 @@ use Branches\Branches;
  */
 trait ManagerTrait
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
     /**

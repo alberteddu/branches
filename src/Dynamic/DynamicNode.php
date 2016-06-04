@@ -10,9 +10,7 @@
 
 namespace Branches\Dynamic;
 
-use Branches\Branches;
 use Branches\Property\PropertyHolderTrait;
-use Branches\Url\Url;
 
 /**
  * Class DynamicNode

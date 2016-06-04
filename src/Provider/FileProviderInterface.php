@@ -10,7 +10,6 @@
 
 namespace Branches\Provider;
 
-use Branches\Branches;
 use Branches\Node\FileInterface;
 use Branches\Url\Url;
 
@@ -22,8 +21,8 @@ use Branches\Url\Url;
 interface FileProviderInterface
 {
     /**
-     * @param Url   $url
-     * @param string   $realpath
+     * @param Url    $url
+     * @param string $realpath
      *
      * @return FileInterface
      */

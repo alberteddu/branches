@@ -17,7 +17,9 @@ namespace Branches\Url;
  */
 class Url
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $url;
 
     /**

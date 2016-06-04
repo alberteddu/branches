@@ -18,8 +18,6 @@ namespace Branches\Vote;
 abstract class VoteResult
 {
     const YES = true;
-
     const NO = false;
-
     const ABSTAIN = -1;
 }

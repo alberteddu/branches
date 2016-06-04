@@ -10,7 +10,6 @@
 
 namespace Branches\Dynamic;
 
-use Branches\Node\FileInterface;
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 

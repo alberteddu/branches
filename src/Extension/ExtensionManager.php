@@ -21,7 +21,9 @@ use Branches\Manager\Manager;
  */
 class ExtensionManager extends Manager
 {
-    /** @var ExtensionInterface[] */
+    /**
+     * @var ExtensionInterface[]
+     */
     protected $extensions = array();
 
     /**

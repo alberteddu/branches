@@ -10,7 +10,6 @@
 
 namespace Branches\Resolution;
 
-use Branches\Branches;
 use Branches\Component\ComponentHolder;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ResolutionExtensionInterface;

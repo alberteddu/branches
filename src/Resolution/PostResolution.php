@@ -10,8 +10,6 @@
 
 namespace Branches\Resolution;
 
-use Branches\Node\NodeInterface;
-
 /**
  * Class PostResolution
  *
@@ -19,6 +17,9 @@ use Branches\Node\NodeInterface;
  */
 class PostResolution extends NodeResolution implements ResolutionInterface
 {
+    /**
+     * @return int
+     */
     public function getResolutionType()
     {
         return ResolutionType::POST;

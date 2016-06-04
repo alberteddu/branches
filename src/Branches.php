@@ -12,13 +12,12 @@ namespace Branches;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Directory\InvalidDirectoryException;
-use Branches\Extension\DynamicPost\DynamicPostResolutionExtension;
 use Branches\Extension\ExtensionInterface;
 use Branches\Extension\ExtensionManager;
-use Branches\Extension\Properties\PropertiesExtension;
 use Branches\Node\NodeInterface;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\NodeManager;
+use Branches\Node\NodeType;
 use Branches\Provider\FileListProvider;
 use Branches\Provider\FileListProviderInterface;
 use Branches\Provider\FileProvider;
@@ -40,31 +39,49 @@ class Branches
 {
     const VERSION = '0.0.1';
 
-    /** @var string real path of the directory */
+    /**
+     * @var string real path of the directory
+     */
     protected $path;
 
-    /** @var PostProviderInterface */
+    /**
+     * @var PostProviderInterface
+     */
     protected $postProvider;
 
-    /** @var FileProviderInterface */
+    /**
+     * @var FileProviderInterface
+     */
     protected $fileProvider;
 
-    /** @var PostListProviderInterface */
+    /**
+     * @var PostListProviderInterface
+     */
     protected $postListProvider;
 
-    /** @var FileListProviderInterface */
+    /**
+     * @var FileListProviderInterface
+     */
     protected $fileListProvider;
 
-    /** @var ResolutionManager */
+    /**
+     * @var ResolutionManager
+     */
     protected $resolutionManager;
 
-    /** @var UrlManager */
+    /**
+     * @var UrlManager
+     */
     protected $urlManager;
 
-    /** @var NodeManager */
+    /**
+     * @var NodeManager
+     */
     protected $nodeManager;
 
-    /** @var ExtensionManager */
+    /**
+     * @var ExtensionManager
+     */
     protected $extensionManager;
 
     /**
@@ -219,6 +236,20 @@ class Branches
     public function setFileListProvider($fileListProvider)
     {
         $this->fileListProvider = $fileListProvider;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return FileListProviderInterface|PostListProviderInterface
+     */
+    public function getNodeListProvider($type)
+    {
+        if (NodeType::FILE === $type) {
+            return $this->getFileListProvider();
+        }
+
+        return $this->getPostListProvider();
     }
 
     /**

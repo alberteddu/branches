@@ -17,7 +17,9 @@ namespace Branches\Property;
  */
 trait PropertyHolderTrait
 {
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $properties = array();
 
     /**

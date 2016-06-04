@@ -19,6 +19,9 @@ use Branches\Node\NodeInterface;
  */
 class NotFoundResolution implements ResolutionInterface
 {
+    /**
+     * @return int
+     */
     public function getResolutionType()
     {
         return ResolutionType::NOT_FOUND;

@@ -20,7 +20,9 @@ use Branches\Url\Url;
  */
 class AbstractFile extends File
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $segment;
 
     /**

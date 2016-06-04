@@ -10,11 +10,9 @@
 
 namespace Branches\Node;
 
-use ArrayIterator;
 use ArrayObject;
 use Branches\Branches;
 use Branches\Provider\NodeListProviderInterface;
-use IteratorAggregate;
 
 /**
  * Class NodeList
@@ -23,12 +21,20 @@ use IteratorAggregate;
  */
 abstract class NodeList extends ArrayObject implements NodeListInterface
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $elements = array();
 
+    /**
+     * @param Branches $branches
+     * @param array    $elements
+     */
     public function __construct(Branches $branches, array $elements)
     {
         $this->branches = $branches;

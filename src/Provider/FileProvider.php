@@ -21,7 +21,9 @@ use Branches\Url\Url;
  */
 class FileProvider implements FileProviderInterface
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
     public function __construct(Branches $branches)

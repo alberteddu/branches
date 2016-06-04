@@ -17,6 +17,9 @@ namespace Branches\Resolution;
  */
 class FileResolution extends NodeResolution implements ResolutionInterface
 {
+    /**
+     * @return int
+     */
     public function getResolutionType()
     {
         return ResolutionType::FILE;

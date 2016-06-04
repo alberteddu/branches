@@ -21,14 +21,25 @@ use Branches\Url\Url;
  */
 class PostProvider implements PostProviderInterface
 {
-    /** @var Branches */
+    /**
+     * @var Branches
+     */
     protected $branches;
 
+    /**
+     * @param Branches $branches
+     */
     public function __construct(Branches $branches)
     {
         $this->branches = $branches;
     }
 
+    /**
+     * @param Url    $url
+     * @param string $realpath
+     *
+     * @return Post
+     */
     public function provide(Url $url, $realpath)
     {
         return new Post($this->branches, $url, $realpath);

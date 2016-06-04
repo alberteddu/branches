@@ -12,7 +12,6 @@ namespace Branches\Extension\DynamicPost;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Component\BranchesAwareTrait;
-use Branches\Node\AbstractPost;
 use Branches\Node\File;
 use Branches\Node\NodeNotFoundException;
 use Branches\Node\Post;

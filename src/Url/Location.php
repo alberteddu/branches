@@ -17,10 +17,14 @@ namespace Branches\Url;
  */
 class Location
 {
-    /** @var Url */
+    /**
+     * @var Url
+     */
     protected $url;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $path;
 
     /**

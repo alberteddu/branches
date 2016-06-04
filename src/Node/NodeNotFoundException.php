@@ -19,7 +19,9 @@ use Exception;
  */
 class NodeNotFoundException extends Exception
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $url;
 
     /**

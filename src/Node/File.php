@@ -10,9 +10,6 @@
 
 namespace Branches\Node;
 
-use Branches\Branches;
-use Branches\Property\PropertyHolderTrait;
-
 /**
  * Class File
  *

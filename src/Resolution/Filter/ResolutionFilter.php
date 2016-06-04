@@ -10,8 +10,6 @@
 
 namespace Branches\Resolution\Filter;
 
-use Branches\Component\BranchesAwareTrait;
-
 /**
  * Class ResolutionFilter
  *
@@ -19,5 +17,4 @@ use Branches\Component\BranchesAwareTrait;
  */
 abstract class ResolutionFilter implements ResolutionFilterInterface
 {
-
 }

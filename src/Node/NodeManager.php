@@ -67,16 +67,20 @@ class NodeManager extends Manager
                     } elseif (NodeType::FILE === $nodeType and $node instanceof FileInterface) {
                         $nodes[] = $node;
                     }
-                } catch(NodeNotFoundException $e) {
-                    // We ignore non existing files.
+                } catch (NodeNotFoundException $e) {
+                    // Ignore non existing files.
                 }
             }
         }
 
-        $urlObject = new Url($url);
+        $urlObject    = new Url($url);
+        $listProvider = $this->branches->getPostListProvider();
+
+        if ($skipDynamic) {
+            return $listProvider->provide($nodes);
+        }
 
         if (NodeType::POST === $nodeType) {
-            $listProvider     = $this->branches->getPostListProvider();
             $dynamicProviders = $this->getDynamicPostProviders();
 
             /** @var DynamicPostProviderInterface $dynamicProvider */
@@ -89,7 +93,6 @@ class NodeManager extends Manager
                 }
             }
         } else {
-            $listProvider     = $this->branches->getFileListProvider();
             $dynamicProviders = $this->getDynamicFileProviders();
 
             /** @var DynamicFileProviderInterface $dynamicProvider */
@@ -137,7 +140,7 @@ class NodeManager extends Manager
 
         $result = $this->branches->getResolutionManager()->resolve($this->branches->getResolutionManager()->filterResolution($url, $resolution));
 
-        if (is_null($result)) {
+        if (null === $result) {
             throw new NodeNotFoundException($url);
         }
 

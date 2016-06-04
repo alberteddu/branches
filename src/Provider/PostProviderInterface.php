@@ -10,7 +10,6 @@
 
 namespace Branches\Provider;
 
-use Branches\Branches;
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 

@@ -10,8 +10,6 @@
 
 namespace Branches\Url\Vote;
 
-use Branches\Vote\VoteResult;
-
 /**
  * Class UrlVoter
  *
@@ -19,10 +17,14 @@ use Branches\Vote\VoteResult;
  */
 abstract class UrlSegmentVoter implements UrlSegmentVoterInterface
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $urlSegment;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $pathSegment;
 
     /**

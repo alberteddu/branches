@@ -10,8 +10,6 @@
 
 namespace Branches\Node;
 
-use Branches\Branches;
-
 /**
  * Class Post
  *
