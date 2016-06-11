@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Dynamic;
 
 /**
- * Class DynamicFile
- *
- * @package Branches\Dynamic
+ * Class DynamicFile.
  */
 class DynamicFile extends DynamicNode
 {

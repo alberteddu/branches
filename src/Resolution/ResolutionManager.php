@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 use Branches\Component\ComponentHolder;
@@ -19,9 +18,7 @@ use Branches\Resolution\Filter\ResolutionFilterInterface;
 use Branches\Url\Url;
 
 /**
- * Class ResolutionManager
- *
- * @package Branches\Resolution
+ * Class ResolutionManager.
  */
 class ResolutionManager extends Manager
 {

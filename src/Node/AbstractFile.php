@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Branches\Branches;
 use Branches\Url\Url;
 
 /**
- * Class AbstractFile
- *
- * @package Branches\Node
+ * Class AbstractFile.
  */
 class AbstractFile extends File
 {
@@ -50,6 +47,5 @@ class AbstractFile extends File
      */
     public function getContent()
     {
-
     }
 }

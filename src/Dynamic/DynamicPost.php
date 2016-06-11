@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Dynamic;
 
 /**
- * Class DynamicPost
- *
- * @package Branches\Dynamic
+ * Class DynamicPost.
  */
 class DynamicPost extends DynamicNode
 {

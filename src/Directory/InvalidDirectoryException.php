@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Directory;
 
 use Exception;
 
 /**
- * Class InvalidDirectoryException
- *
- * @package Branches\Directory
+ * Class InvalidDirectoryException.
  */
 class InvalidDirectoryException extends Exception
 {

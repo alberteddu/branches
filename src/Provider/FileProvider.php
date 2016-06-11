@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Branches;
@@ -15,9 +14,7 @@ use Branches\Node\File;
 use Branches\Url\Url;
 
 /**
- * Class FileProvider
- *
- * @package Branches\Provider
+ * Class FileProvider.
  */
 class FileProvider implements FileProviderInterface
 {

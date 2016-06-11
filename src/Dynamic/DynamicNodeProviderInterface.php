@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Dynamic;
 
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 
 /**
- * Interface DynamicNodeProviderInterface
- *
- * @package Branches\Provider
+ * Interface DynamicNodeProviderInterface.
  */
 interface DynamicNodeProviderInterface
 {

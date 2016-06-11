@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use ArrayObject;
@@ -15,9 +14,7 @@ use Branches\Branches;
 use Branches\Provider\NodeListProviderInterface;
 
 /**
- * Class NodeList
- *
- * @package Branches\Node
+ * Class NodeList.
  */
 abstract class NodeList extends ArrayObject implements NodeListInterface
 {

@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Interface PostInterface
- *
- * @package Branches\Node
+ * Interface PostInterface.
  */
 interface PostInterface extends NodeInterface
 {

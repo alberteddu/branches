@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Interface NodeInterface
- *
- * @package Branches
+ * Interface NodeInterface.
  */
 interface NodeInterface
 {

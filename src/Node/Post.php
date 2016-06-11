@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Class Post
- *
- * @package Branches\Node
+ * Class Post.
  */
 class Post extends Node implements PostInterface
 {
@@ -30,7 +27,7 @@ class Post extends Node implements PostInterface
      */
     public function getParent()
     {
-        if($this->isRoot()) {
+        if ($this->isRoot()) {
             return null;
         }
 
@@ -46,7 +43,7 @@ class Post extends Node implements PostInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getChildren($skipDynamic = false)
     {
@@ -54,7 +51,7 @@ class Post extends Node implements PostInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttachments($skipDynamic = false)
     {

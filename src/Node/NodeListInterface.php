@@ -7,18 +7,15 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Interface NodeListInterface
- *
- * @package Branches
+ * Interface NodeListInterface.
  */
 interface NodeListInterface
 {
     /**
-     * @return integer
+     * @return int
      */
     public function count();
 

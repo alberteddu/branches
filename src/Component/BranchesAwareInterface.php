@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Component;
 
 use Branches\Branches;
 
 /**
- * Interface BranchesAwareInterface
- *
- * @package Branches\Component
+ * Interface BranchesAwareInterface.
  */
 interface BranchesAwareInterface
 {

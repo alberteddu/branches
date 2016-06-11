@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Dynamic;
 
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 
 /**
- * Interface DynamicFileProviderInterface
- *
- * @package Branches\Dynamic
+ * Interface DynamicFileProviderInterface.
  */
 interface DynamicFileProviderInterface extends DynamicNodeProviderInterface
 {

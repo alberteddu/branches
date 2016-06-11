@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Node\PostInterface;
 use Branches\Url\Url;
 
 /**
- * Interface PostProviderInterface
- *
- * @package Branches\Provider
+ * Interface PostProviderInterface.
  */
 interface PostProviderInterface
 {

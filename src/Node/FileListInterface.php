@@ -7,15 +7,11 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Interface FileListInterface
- *
- * @package Branches\Node
+ * Interface FileListInterface.
  */
 interface FileListInterface extends NodeListInterface
 {
-
 }

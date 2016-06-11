@@ -29,13 +29,19 @@ class PropertiesResolutionFilter implements ResolutionFilterInterface, BranchesA
 {
     use BranchesAwareTrait;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected static $defaultExtensions = array('md', 'markdown', 'txt');
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $extensions;
 
-    /** @var NodeFileParserInterface */
+    /**
+     * @var NodeFileParserInterface
+     */
     protected $postFileParser;
 
     /**

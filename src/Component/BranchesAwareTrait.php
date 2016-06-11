@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Component;
 
 use Branches\Branches;
 
 /**
- * Class BranchesAwareTrait
- *
- * @package Branches\Component
+ * Class BranchesAwareTrait.
  */
 trait BranchesAwareTrait
 {

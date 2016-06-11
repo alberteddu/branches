@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url;
 
 /**
- * Class Url
- *
- * @package Branches\Url
+ * Class Url.
  */
 class Url
 {
@@ -45,7 +42,7 @@ class Url
      */
     public static function cleanUrl($url)
     {
-        return preg_replace('#/+#', '/', '/' . $url);
+        return preg_replace('#/+#', '/', '/'.$url);
     }
 
     /**
@@ -104,7 +101,7 @@ class Url
      */
     public function append($url)
     {
-        return new Url(UrlManager::join($this->url, $url));
+        return new self(UrlManager::join($this->url, $url));
     }
 
     /**

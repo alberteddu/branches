@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Branches\Provider\FileListProviderInterface;
 
 /**
- * Interface FileInterface
- *
- * @package Branches\Node
+ * Interface FileInterface.
  */
 class FileList extends NodeList implements FileListInterface
 {

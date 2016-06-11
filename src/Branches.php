@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches;
 
 use Branches\Component\BranchesAwareInterface;
@@ -31,9 +30,7 @@ use Branches\Url\UrlManager;
 use Branches\Url\Vote\UrlSegmentEqualityVoter;
 
 /**
- * Class Branches
- *
- * @package Branches
+ * Class Branches.
  */
 class Branches
 {
@@ -95,15 +92,15 @@ class Branches
             throw new InvalidDirectoryException($directory);
         }
 
-        $this->path              = realpath($directory);
-        $this->postProvider      = new PostProvider($this);
-        $this->fileProvider      = new FileProvider($this);
-        $this->postListProvider  = new PostListProvider($this);
-        $this->fileListProvider  = new FileListProvider($this);
+        $this->path = realpath($directory);
+        $this->postProvider = new PostProvider($this);
+        $this->fileProvider = new FileProvider($this);
+        $this->postListProvider = new PostListProvider($this);
+        $this->fileListProvider = new FileListProvider($this);
         $this->resolutionManager = new ResolutionManager($this);
-        $this->urlManager        = new UrlManager($this);
-        $this->nodeManager       = new NodeManager($this);
-        $this->extensionManager  = new ExtensionManager($this);
+        $this->urlManager = new UrlManager($this);
+        $this->nodeManager = new NodeManager($this);
+        $this->extensionManager = new ExtensionManager($this);
 
         $this->useExtension(new UrlSegmentEqualityVoter());
     }

@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 /**
- * Class Extension
- *
- * @package Branches\Extension
+ * Class Extension.
  */
 abstract class Extension implements ExtensionInterface
 {

@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url\Vote;
 
 /**
- * Class UrlVoter
- *
- * @package Branches\Url\Vote
+ * Class UrlVoter.
  */
 abstract class UrlSegmentVoter implements UrlSegmentVoterInterface
 {

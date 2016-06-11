@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 /**
- * Interface ResolutionInterface
- *
- * @package Branches\Resolution
+ * Interface ResolutionInterface.
  */
 abstract class ResolutionType
 {

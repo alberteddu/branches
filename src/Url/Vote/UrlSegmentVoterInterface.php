@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url\Vote;
 
 use Branches\Vote\VoterInterface;
 
 /**
- * Interface UrlVoterInterface
- *
- * @package Branches\Url\Vote
+ * Interface UrlVoterInterface.
  */
 interface UrlSegmentVoterInterface extends VoterInterface
 {

@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url\Vote;
 
 use Branches\Component\ComponentHolder;
@@ -16,9 +15,7 @@ use Branches\Extension\UrlExtensionInterface;
 use Branches\Vote\VoteResult;
 
 /**
- * Class UrlSegmentEqualityVoter
- *
- * @package Branches\Url\Vote
+ * Class UrlSegmentEqualityVoter.
  */
 class UrlSegmentEqualityVoter extends UrlSegmentVoter implements ExtensionInterface, UrlExtensionInterface
 {

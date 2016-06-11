@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 use Branches\Component\BranchesAwareInterface;
 use Branches\Component\BranchesAwareTrait;
 
 /**
- * Class BranchesAwareExtension
- *
- * @package Branches\Extension
+ * Class BranchesAwareExtension.
  */
 abstract class BranchesAwareExtension implements BranchesAwareInterface
 {

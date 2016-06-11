@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Interface PostListInterface
- *
- * @package Branches\Node
+ * Interface PostListInterface.
  */
 interface PostListInterface extends NodeListInterface
 {

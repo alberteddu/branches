@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Node\FileInterface;
 use Branches\Url\Url;
 
 /**
- * Interface FileProviderInterface
- *
- * @package Branches\Provider
+ * Interface FileProviderInterface.
  */
 interface FileProviderInterface
 {

@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Exception;
 
 /**
- * Class NodeNotFoundException
- *
- * @package Branches\Node
+ * Class NodeNotFoundException.
  */
 class NodeNotFoundException extends Exception
 {

@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Branches\Provider\PostListProviderInterface;
 
 /**
- * Class PostList
- *
- * @package Branches\Node
+ * Class PostList.
  */
 class PostList extends NodeList implements PostListInterface
 {

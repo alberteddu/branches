@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Node\PostInterface;
 use Branches\Node\PostListInterface;
 
 /**
- * Interface FileListProviderInterface
- *
- * @package Branches\Provider
+ * Interface FileListProviderInterface.
  */
 interface PostListProviderInterface extends NodeListProviderInterface
 {

@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 /**
- * Class FileResolution
- *
- * @package Branches\Resolution
+ * Class FileResolution.
  */
 class FileResolution extends NodeResolution implements ResolutionInterface
 {

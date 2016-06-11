@@ -7,20 +7,17 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 use Branches\Node\NodeInterface;
 
 /**
- * Interface ResolutionInterface
- *
- * @package Branches\Resolution
+ * Interface ResolutionInterface.
  */
 interface ResolutionInterface
 {
     /**
-     * @return integer
+     * @return int
      */
     public function getResolutionType();
 

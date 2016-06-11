@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Manager;
 
 use Branches\Branches;
 
 /**
- * Class ManagerTrait
- *
- * @package Branches\Manager
+ * Class ManagerTrait.
  */
 trait ManagerTrait
 {

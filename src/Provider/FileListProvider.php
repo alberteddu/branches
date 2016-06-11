@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Branches;
@@ -15,9 +14,7 @@ use Branches\Node\FileList;
 use Branches\Node\FileListInterface;
 
 /**
- * Class FileListProvider
- *
- * @package Branches\Provider
+ * Class FileListProvider.
  */
 class FileListProvider implements FileListProviderInterface
 {

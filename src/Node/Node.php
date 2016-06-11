@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Branches\Branches;
@@ -15,9 +14,7 @@ use Branches\Property\PropertyHolderTrait;
 use Branches\Url\Url;
 
 /**
- * Class Node
- *
- * @package Branches\Node
+ * Class Node.
  */
 abstract class Node implements NodeInterface
 {
@@ -46,8 +43,8 @@ abstract class Node implements NodeInterface
     public function __construct(Branches $branches, Url $url, $path)
     {
         $this->branches = $branches;
-        $this->url      = $url;
-        $this->path     = $path;
+        $this->url = $url;
+        $this->path = $path;
     }
 
     /**

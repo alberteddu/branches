@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Vote;
 
 /**
- * Interface VoterInterface
- *
- * @package Branches\Vote
+ * Interface VoterInterface.
  */
 interface VoterInterface
 {

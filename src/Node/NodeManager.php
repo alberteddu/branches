@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use BadMethodCallException;
@@ -30,9 +29,7 @@ use FilesystemIterator;
 use RecursiveDirectoryIterator;
 
 /**
- * Class PostManager
- *
- * @package Branches\Node
+ * Class PostManager.
  */
 class NodeManager extends Manager
 {
@@ -73,7 +70,7 @@ class NodeManager extends Manager
             }
         }
 
-        $urlObject    = new Url($url);
+        $urlObject = new Url($url);
         $listProvider = $this->branches->getPostListProvider();
 
         if ($skipDynamic) {
@@ -118,20 +115,20 @@ class NodeManager extends Manager
      */
     public function get($url)
     {
-        $url      = new Url($url);
+        $url = new Url($url);
         $location = $this->branches->getUrlManager()->urlMatches($url);
 
         if ($location === false) {
             $resolution = new NotFoundResolution();
         } else {
-            $url      = $location->getUrl();
+            $url = $location->getUrl();
             $realPath = $location->getPath();
 
             if (Branches::isDirectoryValid($realPath)) {
-                $post       = $this->branches->getPostProvider()->provide($url, $realPath);
+                $post = $this->branches->getPostProvider()->provide($url, $realPath);
                 $resolution = new PostResolution($post);
             } elseif (Branches::isFileValid($realPath)) {
-                $file       = $this->branches->getFileProvider()->provide($url, $realPath);
+                $file = $this->branches->getFileProvider()->provide($url, $realPath);
                 $resolution = new FileResolution($file);
             } else {
                 $resolution = new NotFoundResolution();

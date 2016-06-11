@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Vote;
 
 /**
- * Class VoteResult
- *
- * @package Branches\Vote
+ * Class VoteResult.
  */
 abstract class VoteResult
 {

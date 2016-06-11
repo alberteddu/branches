@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Manager;
 
 /**
- * Class Manager
- *
- * @package Branches\Manager
+ * Class Manager.
  */
 abstract class Manager
 {

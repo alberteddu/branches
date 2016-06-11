@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url;
 
 /**
- * Class Location
- *
- * @package Branches\Url
+ * Class Location.
  */
 class Location
 {
@@ -33,7 +30,7 @@ class Location
      */
     public function __construct(Url $url, $path)
     {
-        $this->url  = $url;
+        $this->url = $url;
         $this->path = $path;
     }
 

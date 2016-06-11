@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Node\NodeInterface;
 use Branches\Node\NodeListInterface;
 
 /**
- * Interface NodeListProviderInterface
- *
- * @package Branches\Provider
+ * Interface NodeListProviderInterface.
  */
 interface NodeListProviderInterface
 {

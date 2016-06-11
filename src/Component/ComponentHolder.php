@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Component;
 
 use SplPriorityQueue;
 
 /**
- * Class ComponentHolder
- *
- * @package Branches\Component
+ * Class ComponentHolder.
  */
 class ComponentHolder extends SplPriorityQueue implements BranchesAwareInterface
 {

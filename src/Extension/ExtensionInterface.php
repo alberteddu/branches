@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 /**
- * Interface ExtensionInterface
- *
- * @package Branches\Extension
+ * Interface ExtensionInterface.
  */
 interface ExtensionInterface
 {

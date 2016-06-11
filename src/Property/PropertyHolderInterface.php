@@ -7,25 +7,22 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Property;
 
 /**
- * Interface PropertyHolderInterface
- *
- * @package Branches\Property
+ * Interface PropertyHolderInterface.
  */
 interface PropertyHolderInterface
 {
     /**
      * @param string $name
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function setProperty($name, $value);
 
     /**
      * @param string $name
-     * @param mixed $default
+     * @param mixed  $default
      *
      * @return mixed
      */

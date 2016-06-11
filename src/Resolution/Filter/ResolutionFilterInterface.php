@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution\Filter;
 
 use Branches\Resolution\ResolutionInterface;
 use Branches\Url\Url;
 
 /**
- * Interface ResolutionFilterInterface
- *
- * @package Branches\Resolution\Filter
+ * Interface ResolutionFilterInterface.
  */
 interface ResolutionFilterInterface
 {

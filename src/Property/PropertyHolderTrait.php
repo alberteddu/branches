@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Property;
 
 /**
- * Class PropertyHolderTrait
- *
- * @package Branches\Property
+ * Class PropertyHolderTrait.
  */
 trait PropertyHolderTrait
 {
@@ -24,7 +21,7 @@ trait PropertyHolderTrait
 
     /**
      * @param string $name
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function setProperty($name, $value)
     {
@@ -33,7 +30,7 @@ trait PropertyHolderTrait
 
     /**
      * @param string $name
-     * @param mixed $default
+     * @param mixed  $default
      *
      * @return mixed
      */

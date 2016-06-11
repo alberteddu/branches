@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 /**
- * Class PostResolution
- *
- * @package Branches\Resolution
+ * Class PostResolution.
  */
 class PostResolution extends NodeResolution implements ResolutionInterface
 {

@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 use Branches\Component\BranchesAwareInterface;
@@ -15,9 +14,7 @@ use Branches\Component\ComponentHolder;
 use Branches\Manager\Manager;
 
 /**
- * Class ExtensionManager
- *
- * @package Branches\Extension
+ * Class ExtensionManager.
  */
 class ExtensionManager extends Manager
 {

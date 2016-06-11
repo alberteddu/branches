@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 use Branches\Node\NodeInterface;
 
 /**
- * Class NodeResolution
- *
- * @package Branches\Resolution
+ * Class NodeResolution.
  */
 abstract class NodeResolution implements ResolutionInterface
 {
@@ -25,7 +22,7 @@ abstract class NodeResolution implements ResolutionInterface
     private $node;
 
     /**
-     * @return integer
+     * @return int
      */
     abstract public function getResolutionType();
 

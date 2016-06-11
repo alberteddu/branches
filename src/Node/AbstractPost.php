@@ -7,16 +7,13 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 use Branches\Branches;
 use Branches\Url\Url;
 
 /**
- * Class AbstractPost
- *
- * @package Branches\Node
+ * Class AbstractPost.
  */
 class AbstractPost extends Post
 {
@@ -46,7 +43,7 @@ class AbstractPost extends Post
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getChildren($skipDynamic = false)
     {
@@ -54,7 +51,7 @@ class AbstractPost extends Post
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttachments($skipDynamic = false)
     {

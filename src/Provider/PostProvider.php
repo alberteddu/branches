@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Provider;
 
 use Branches\Branches;
@@ -15,9 +14,7 @@ use Branches\Node\Post;
 use Branches\Url\Url;
 
 /**
- * Class NodeProvider
- *
- * @package Branches\Provider
+ * Class NodeProvider.
  */
 class PostProvider implements PostProviderInterface
 {

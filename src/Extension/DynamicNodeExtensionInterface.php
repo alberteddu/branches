@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 use Branches\Component\ComponentHolder;
 
 /**
- * Interface DynamicNodeExtensionInterface
- *
- * @package Branches\Extension
+ * Interface DynamicNodeExtensionInterface.
  */
 interface DynamicNodeExtensionInterface extends ExtensionInterface
 {

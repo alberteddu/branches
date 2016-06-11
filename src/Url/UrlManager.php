@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Url;
 
 use Branches\Component\ComponentHolder;
@@ -20,9 +19,7 @@ use FilesystemIterator;
 use RecursiveDirectoryIterator;
 
 /**
- * Class UrlManager
- *
- * @package Branches\Url
+ * Class UrlManager.
  */
 class UrlManager extends Manager
 {
@@ -37,9 +34,9 @@ class UrlManager extends Manager
         $urlSegments = array();
 
         foreach ($url->getSegments() as $urlSegment) {
-            $found           = false;
+            $found = false;
             $realPathSegment = $urlSegment;
-            $realUrlSegment  = $urlSegment;
+            $realUrlSegment = $urlSegment;
 
             /** @var DirectoryIterator $nodePath */
             foreach (new RecursiveDirectoryIterator($currentPath, FilesystemIterator::SKIP_DOTS) as $nodePath) {
@@ -50,7 +47,7 @@ class UrlManager extends Manager
                 $pathSegment = $nodePath->getFilename();
 
                 if (($realUrlSegment = $this->segmentMatches($urlSegment, $pathSegment))) {
-                    $found           = true;
+                    $found = true;
                     $realPathSegment = $pathSegment;
                 }
             }
@@ -59,7 +56,7 @@ class UrlManager extends Manager
                 return false;
             }
 
-            $currentPath .= '/' . $realPathSegment;
+            $currentPath .= '/'.$realPathSegment;
             $urlSegments[] = $realUrlSegment;
         }
 
@@ -76,7 +73,7 @@ class UrlManager extends Manager
      */
     protected function segmentMatches($urlSegment, $pathSegment)
     {
-        $result         = false;
+        $result = false;
         $realUrlSegment = $urlSegment;
 
         foreach ($this->getUrlSegmentVoters() as $urlSegmentVoter) {
@@ -88,7 +85,7 @@ class UrlManager extends Manager
             }
 
             if ($urlSegmentVoter->vote() === VoteResult::YES) {
-                $result         = true;
+                $result = true;
                 $realUrlSegment = $urlSegmentVoter->transformSegment($urlSegment);
             }
         }
@@ -122,6 +119,7 @@ class UrlManager extends Manager
 
     /**
      * @author Riccardo Galli
+     *
      * @link   http://stackoverflow.com/a/15575293/223090
      *
      * @return string
@@ -136,7 +134,7 @@ class UrlManager extends Manager
             }
         }
 
-        return preg_replace('#/+#', '/', join('/', $paths));
+        return preg_replace('#/+#', '/', implode('/', $paths));
     }
 
     /**

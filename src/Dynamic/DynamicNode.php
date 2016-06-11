@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Dynamic;
 
 use Branches\Property\PropertyHolderTrait;
 
 /**
- * Class DynamicNode
- *
- * @package Branches\Dynamic
+ * Class DynamicNode.
  */
 abstract class DynamicNode
 {

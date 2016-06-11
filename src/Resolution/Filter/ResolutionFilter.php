@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution\Filter;
 
 /**
- * Class ResolutionFilter
- *
- * @package Branches\Resolution\Filter
+ * Class ResolutionFilter.
  */
 abstract class ResolutionFilter implements ResolutionFilterInterface
 {

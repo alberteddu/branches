@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Resolution;
 
 use Branches\Node\NodeInterface;
 
 /**
- * Class NotFoundResolution
- *
- * @package Branches\Resolution
+ * Class NotFoundResolution.
  */
 class NotFoundResolution implements ResolutionInterface
 {
@@ -32,6 +29,6 @@ class NotFoundResolution implements ResolutionInterface
      */
     public function getNode()
     {
-        return null;
+        return;
     }
 }

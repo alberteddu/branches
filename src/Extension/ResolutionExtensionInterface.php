@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 use Branches\Component\ComponentHolder;
 
 /**
- * Interface ResolutionExtensionInterface
- *
- * @package Branches\Extension
+ * Interface ResolutionExtensionInterface.
  */
 interface ResolutionExtensionInterface extends ExtensionInterface
 {

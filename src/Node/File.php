@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Class File
- *
- * @package Branches\Node
+ * Class File.
  */
 class File extends Node implements FileInterface
 {

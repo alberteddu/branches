@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Node;
 
 /**
- * Class NodeType
- *
- * @package Branches\Node
+ * Class NodeType.
  */
 abstract class NodeType
 {

@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension;
 
 use Branches\Component\ComponentHolder;
 
 /**
- * Interface UrlExtensionInterface
- *
- * @package Branches\Extension
+ * Interface UrlExtensionInterface.
  */
 interface UrlExtensionInterface extends ExtensionInterface
 {
