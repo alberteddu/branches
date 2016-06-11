@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\Properties;
 
 use Branches\Component\ComponentHolder;
@@ -15,11 +14,10 @@ use Branches\Extension\Extension;
 use Branches\Extension\ResolutionExtensionInterface;
 
 /**
- * Class PropertiesExtension
- *
- * @package Branches\Extension\Properties
+ * Class PropertiesExtension.
  */
-class PropertiesExtension extends Extension implements ResolutionExtensionInterface {
+class PropertiesExtension extends Extension implements ResolutionExtensionInterface
+{
     /**
      * @return string
      */

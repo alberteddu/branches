@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\DynamicPost;
 
 use Branches\Component\ComponentHolder;
@@ -15,11 +14,10 @@ use Branches\Extension\Extension;
 use Branches\Extension\ResolutionExtensionInterface;
 
 /**
- * Class DynamicPostResolutionExtension
- *
- * @package Branches\Extension\DynamicPost
+ * Class DynamicPostResolutionExtension.
  */
-class DynamicPostResolutionExtension extends Extension implements ResolutionExtensionInterface {
+class DynamicPostResolutionExtension extends Extension implements ResolutionExtensionInterface
+{
     /**
      * @return string
      */

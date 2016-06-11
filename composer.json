@@ -13,8 +13,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Branches\\": "src",
-            "Branches\\Extension\\": "extension"
+            "Branches\\": "src"
         }
     },
     "require": {

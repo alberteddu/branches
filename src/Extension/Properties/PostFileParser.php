@@ -7,15 +7,12 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\Properties;
 
 use Mni\FrontYAML\Parser;
 
 /**
- * Class PostFileParser
- *
- * @package Branches\Extension\Properties
+ * Class PostFileParser.
  */
 class PostFileParser implements NodeFileParserInterface
 {
@@ -26,9 +23,9 @@ class PostFileParser implements NodeFileParserInterface
      */
     public function parse($path)
     {
-        $parser                  = new Parser();
-        $document                = $parser->parse(file_get_contents($path));
-        $properties              = $document->getYAML();
+        $parser = new Parser();
+        $document = $parser->parse(file_get_contents($path));
+        $properties = $document->getYAML();
         $properties['__content'] = $document->getContent();
 
         return $properties;

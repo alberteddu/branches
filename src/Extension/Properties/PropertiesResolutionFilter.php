@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\Properties;
 
 use Branches\Component\BranchesAwareInterface;
@@ -21,9 +20,7 @@ use Branches\Resolution\ResolutionType;
 use Branches\Url\Url;
 
 /**
- * Class PropertiesResolutionFilter
- *
- * @package Branches\Extension\DynamicPost
+ * Class PropertiesResolutionFilter.
  */
 class PropertiesResolutionFilter implements ResolutionFilterInterface, BranchesAwareInterface
 {
@@ -58,7 +55,7 @@ class PropertiesResolutionFilter implements ResolutionFilterInterface, BranchesA
             $postFileParser = new PostFileParser();
         }
 
-        $this->extensions     = $extensions;
+        $this->extensions = $extensions;
         $this->postFileParser = $postFileParser;
     }
 

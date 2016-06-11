@@ -7,7 +7,6 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\DynamicPost;
 
 use Branches\Component\BranchesAwareInterface;
@@ -24,9 +23,7 @@ use Branches\Resolution\ResolutionType;
 use Branches\Url\Url;
 
 /**
- * Class DynamicPostResolutionFilter
- *
- * @package Branches\Extension\DynamicPost
+ * Class DynamicPostResolutionFilter.
  */
 class DynamicPostResolutionFilter implements ResolutionFilterInterface, BranchesAwareInterface
 {
@@ -42,7 +39,7 @@ class DynamicPostResolutionFilter implements ResolutionFilterInterface, Branches
     public function filter(Url $url, ResolutionInterface $resolution, ResolutionInterface $originalResolution)
     {
         if ($resolution->getResolutionType() == ResolutionType::NOT_FOUND) {
-            $parentUrl   = $url->sliceSegments(0, -1);
+            $parentUrl = $url->sliceSegments(0, -1);
 
             try {
                 $parent = $this->branches->get($parentUrl);
@@ -62,8 +59,7 @@ class DynamicPostResolutionFilter implements ResolutionFilterInterface, Branches
                         }
                     }
                 }
-
-            } catch(NodeNotFoundException $e) {
+            } catch (NodeNotFoundException $e) {
                 return $originalResolution;
             }
         }

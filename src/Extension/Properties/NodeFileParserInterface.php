@@ -7,13 +7,10 @@
  * @author   Alberto Piu <alberteddu@gmail.com>
  * @license  MIT
  */
-
 namespace Branches\Extension\Properties;
 
 /**
- * Interface NodeFileParserInterface
- *
- * @package Branches\Extension\Properties
+ * Interface NodeFileParserInterface.
  */
 interface NodeFileParserInterface
 {
