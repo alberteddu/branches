@@ -9,10 +9,12 @@
  */
 namespace Branches\Node;
 
+use Branches\Property\PropertyHolderInterface;
+
 /**
  * Interface NodeInterface.
  */
-interface NodeInterface
+interface NodeInterface extends PropertyHolderInterface
 {
     /**
      * @return string

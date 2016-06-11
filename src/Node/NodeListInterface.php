@@ -39,4 +39,12 @@ interface NodeListInterface
      * @return NodeListInterface
      */
     public function except(NodeInterface $node);
+
+    /**
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return NodeListInterface
+     */
+    public function where($key, $value);
 }

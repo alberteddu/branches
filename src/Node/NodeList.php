@@ -73,6 +73,21 @@ abstract class NodeList extends ArrayObject implements NodeListInterface
     }
 
     /**
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return NodeListInterface
+     */
+    public function where($key, $value)
+    {
+        return $this->filter(function (NodeInterface $node) use ($key, $value) {
+            $property = $node->getProperty($key);
+
+            return $value === $property;
+        });
+    }
+
+    /**
      * @return NodeListProviderInterface
      */
     abstract protected function getProvider();
