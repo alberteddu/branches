@@ -15,6 +15,14 @@ namespace Branches\Node;
 class Post extends Node implements PostInterface
 {
     /**
+     * @return string
+     */
+    public function getAnchor()
+    {
+        return str_replace('/', '--', $this->url);
+    }
+
+    /**
      * @return bool
      */
     public function isRoot()
@@ -31,7 +39,24 @@ class Post extends Node implements PostInterface
             return null;
         }
 
-        return $this->branches->get((string) $this->getUrl()->sliceSegments(0, -1));
+        return $this->branches->get((string)$this->getUrl()->sliceSegments(0, -1));
+    }
+
+    /**
+     * @return PostListInterface
+     */
+    public function getParents()
+    {
+        $posts = [];
+        $current = $this;
+
+        while (($parent = $current->getParent())) {
+            array_unshift($posts, $parent);
+
+            $current = $parent;
+        }
+
+        return $this->branches->getPostListProvider()->provide($posts);
     }
 
     /**
