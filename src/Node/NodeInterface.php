@@ -10,6 +10,7 @@
 namespace Branches\Node;
 
 use Branches\Property\PropertyHolderInterface;
+use Branches\Url\Url;
 
 /**
  * Interface NodeInterface.
@@ -17,7 +18,7 @@ use Branches\Property\PropertyHolderInterface;
 interface NodeInterface extends PropertyHolderInterface
 {
     /**
-     * @return string
+     * @return Url
      */
     public function getUrl();
 

@@ -20,26 +20,36 @@ interface PostInterface extends NodeInterface
     public function getAnchor();
 
     /**
+     * @return bool
+     */
+    public function isRoot();
+
+    /**
      * @return PostInterface|null
      */
     public function getParent();
 
     /**
-     * @return PostListInterface
+     * @return PostListInterface|PostInterface[]
+     */
+    public function getParents();
+
+    /**
+     * @return PostListInterface|PostInterface[]
      */
     public function getSiblings();
 
     /**
      * @param bool $skipDynamic
      *
-     * @return PostListInterface
+     * @return PostListInterface|PostInterface[]
      */
     public function getChildren($skipDynamic = false);
 
     /**
      * @param bool $skipDynamic
      *
-     * @return FileListInterface
+     * @return FileListInterface|FileInterface[]
      */
     public function getAttachments($skipDynamic = false);
 }

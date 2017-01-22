@@ -68,7 +68,7 @@ abstract class NodeList extends ArrayObject implements NodeListInterface
     public function except(NodeInterface $node)
     {
         return $this->filter(function (NodeInterface $eachNode) use ($node) {
-            $eachNode->is($node);
+            return !$eachNode->is($node);
         });
     }
 

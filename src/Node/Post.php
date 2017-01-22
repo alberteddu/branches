@@ -64,7 +64,11 @@ class Post extends Node implements PostInterface
      */
     public function getSiblings()
     {
-        return $this->getChildren()->except($this);
+        if ($this->isRoot()) {
+            return $this->branches->getPostListProvider()->provide([]);
+        }
+
+        return $this->getParent()->getChildren()->except($this);
     }
 
     /**
