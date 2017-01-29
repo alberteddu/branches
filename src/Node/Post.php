@@ -31,7 +31,7 @@ class Post extends Node implements PostInterface
     }
 
     /**
-     * @return PostInterface|null
+     * @return PostInterface|NodeInterface|null
      */
     public function getParent()
     {

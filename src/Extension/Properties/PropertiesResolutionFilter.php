@@ -76,6 +76,7 @@ class PropertiesResolutionFilter implements ResolutionFilterInterface, BranchesA
                 foreach ($post->getAttachments(true) as $attachment) {
                     if (in_array($attachment->getExtension(), $this->extensions)) {
                         $post->mergeProperties($this->postFileParser->parse($attachment->getPath()));
+                        $post->setProperty('__content_filename', $attachment->getUrl()->getLastSegment());
 
                         break;
                     }
